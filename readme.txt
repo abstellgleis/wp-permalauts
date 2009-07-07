@@ -11,21 +11,21 @@ Encoding/Converting German umlauts correctly for permalinks! The solution: WP Pe
 
 == Description ==
 
-Deutsche Umlaute für Permalinks richtig umkodieren/konvertieren!
+Deutsche Umlaute fÃ¼r Permalinks richtig umkodieren/konvertieren!
 
 Encoding/Converting German umlauts correctly for permalinks!
 
-Die Lösung / the solution: WP PermaLauts!
+Die LÃ¶sung / the solution: WP PermaLauts!
 
 It transforms the german umlauts into well-formed entities (especially for permalinks).
 
 = German description =
 
-Dieses Plugin ist zugleich die Erneuerung und Fortführung des leider nicht mehr gepflegten o42-clean-umlauts (http://otaku42.de/2005/06/30/plugin-o42-clean-umlauts/).
+Dieses Plugin ist zugleich die Erneuerung und FortfÃ¼hrung des leider nicht mehr gepflegten o42-clean-umlauts (http://otaku42.de/2005/06/30/plugin-o42-clean-umlauts/).
 
-Selbst in der aktuellen Fassung von Wordpress werden die Permalinks ganz simpel auf den erlaubten ASCII-Zeichensatz heruntergebrochen, das resultiert dann zu folgenden Umformungen: ä=a, ö=o, ü=u und ß=s — wobei gerade die letzte Umformung sehr unschön anmutet.
+Selbst in der aktuellen Fassung von Wordpress werden die Permalinks ganz simpel auf den erlaubten ASCII-Zeichensatz heruntergebrochen, das resultiert dann zu folgenden Umformungen: Ã¤=a, Ã¶=o, Ã¼=u und ÃŸ=s â€” wobei gerade die letzte Umformung sehr unschÃ¶n anmutet.
 
-Korrekterweise werden Umlaute und das ß aber im Deutschen anders umgeschrieben, wenn man keine Möglichkeit hat, diese zu nutzen. So folgt dann: ä=ae, ö=oe, ü=ue und ß=ss.
+Korrekterweise werden Umlaute und das ÃŸ aber im Deutschen anders umgeschrieben, wenn man keine MÃ¶glichkeit hat, diese zu nutzen. So folgt dann: Ã¤=ae, Ã¶=oe, Ã¼=ue und ÃŸ=ss.
 
 
 == Installation ==
