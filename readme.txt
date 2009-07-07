@@ -19,6 +19,8 @@ Die Lösung / the solution: WP PermaLauts!
 
 It transforms the german umlauts into well-formed entities (especially for permalinks).
 
+(Replaces german umlauts in permalinks, posts, comments and feeds.)
+
 = German description =
 
 Dieses Plugin ist zugleich die Erneuerung und Fortführung des leider nicht mehr gepflegten o42-clean-umlauts (http://otaku42.de/2005/06/30/plugin-o42-clean-umlauts/).

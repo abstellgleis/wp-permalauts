@@ -9,6 +9,8 @@ Author URI: http://blogcraft.de/
 
 This plugin is based on o42-clean-umlauts. It transform the german umlauts into well-formed letters (especially for permalinks).
 
+Replaces german umlauts in permalinks, posts, comments and feeds.
+
 */
 
 #helper
