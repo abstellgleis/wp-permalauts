@@ -3,8 +3,8 @@ Contributors: blogcrafter_chris
 Donate link: 
 Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
 Requires at least: 2.x
-Tested up to: 2.8
-Stable Tag: 0.1
+Tested up to: 2.8.5
+Stable Tag: 0.2
 
 Encoding/Converting German umlauts correctly for permalinks! The solution: WP PermaLauts!
 
@@ -47,6 +47,10 @@ No options, no settings. Works fully in the background!
 
 
 == Changelog ==
+
+* Version 0.2
+
+	Fix: Removed conversion of different types of dashes. So Javascript snippets in posts and pages should work again.
 
 * Version 0.1
 

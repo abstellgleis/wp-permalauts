@@ -3,7 +3,7 @@
 Plugin Name: WP-Permalauts
 Plugin URI: http://blogcraft.de/wordpress-plugins/wp-permalauts/
 Description: This plugin is base on o42-clean-umlauts. It transform the german umlauts into well-formed entities (especially for permalinks).
-Version: 0.1
+Version: 0.2
 Author: Christoph Grabo
 Author URI: http://blogcraft.de/
 
@@ -22,12 +22,12 @@ function u8d($c){
 } #u8d
 					
 $wpl_chartable = array(
-	'raw'	=> array('ä'     ,'Ä'     ,'ö'     ,'Ö'     ,'ü'     ,'Ü'     ,'ß'      ,'—'      ,'–'      ,'---'    ,'--'     ),
-	'in'	=> array(chr(228),chr(196),chr(246),chr(214),chr(252),chr(220),chr(223) ,chr(8212),chr(8211),'---'    ,'--'     ),
-	'perma'	=> array('ae'    ,'Ae'    ,'oe'    ,'Oe'    ,'ue'    ,'Ue'    ,'ss'     ,'---'     ,'--'    ,'---'    ,'--'     ),
-	'post'	=> array('&auml;','&Auml;','&ouml;','&Ouml;','&uuml;','&Uuml;','&szlig;','&mdash;','&ndash;','&mdash;','&ndash;'),
-	'feed'	=> array('&#228;','&#196;','&#246;','&#214;','&#252;','&#220;','&#223;' ,'&#8212;','&#8211;','&#8212;','&#8211;'),
-	'utf8'	=> array(u8e('ä'),u8e('Ä'),u8e('ö'),u8e('Ö'),u8e('ü'),u8e('Ü'),u8e('ß') ,u8e('—') ,u8e('–') ,u8e('—') ,u8e('–') )
+	'raw'	=> array('ä'     ,'Ä'     ,'ö'     ,'Ö'     ,'ü'     ,'Ü'     ,'ß'      ),
+	'in'	=> array(chr(228),chr(196),chr(246),chr(214),chr(252),chr(220),chr(223) ),
+	'perma'	=> array('ae'    ,'Ae'    ,'oe'    ,'Oe'    ,'ue'    ,'Ue'    ,'ss'     ),
+	'post'	=> array('&auml;','&Auml;','&ouml;','&Ouml;','&uuml;','&Uuml;','&szlig;'),
+	'feed'	=> array('&#228;','&#196;','&#246;','&#214;','&#252;','&#220;','&#223;' ),
+	'utf8'	=> array(u8e('ä'),u8e('Ä'),u8e('ö'),u8e('Ö'),u8e('ü'),u8e('Ü'),u8e('ß') )
 ); #chartable
 
 # the dashes won't be converted so far, but leave them here as an example
