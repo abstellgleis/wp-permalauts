@@ -4,7 +4,7 @@ Donate link:
 Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
 Requires at least: 2.x
 Tested up to: 3.0.1
-Stable Tag: 0.3
+Stable Tag: 0.4
 
 Encoding/Converting German umlauts correctly for permalinks! The solution: WP PermaLauts!
 
@@ -48,6 +48,11 @@ No options, no settings. Works fully in the background!
 
 
 == Changelog ==
+
+* Version 0.4
+
+	Added option to show/hide footer text.
+
 
 * Version 0.3
 

@@ -13,7 +13,7 @@ Replaces german umlauts in permalinks only! (All other sanitizing actions should
 
 */
 
-$WPL_VERSION = "0.3";
+$WPL_VERSION = "0.4";
 
 #helper
 function u8e($c){
@@ -87,6 +87,42 @@ function wpl_header(){
 	echo $s;
 }
 
+function wpl_options(){
+  if (!current_user_can('manage_options'))  {
+    wp_die( __('You do not have sufficient permissions to access this page.') );
+  };
+
+  ?><div class="wrap">
+  <h2>WP PermaLauts</h2>
+  <form method="post" action="options.php">
+  <?php wp_nonce_field('update-options'); ?>
+	<table class="form-table">
+	<tr valign="top">
+		<th scope="row">Show or hide footer text of PermaLauts</th>
+		<td>
+		  <select name="wpl_show_footer">
+				<option value="true" <?php if (get_option('wpl_show_footer') == 'true') print "selected"; ?>>Add footer text</option>
+				<option value="false" <?php if (get_option('wpl_show_footer') == 'false') print "selected"; ?>>Hide footer text</option>
+		  </select>
+			  Leaving footer in your blog supports the developer of free software! Show your love!
+		</td>
+	</tr>
+	</table>
+	  <input type="hidden" name="action" value="update" />
+	  <input type="hidden" name="page_options" value="wpl_show_footer" />
+  <p class="submit">
+	<input type="submit" class="button-primary" value="<?php _e('Save Changes'); ?>" />
+  </p>
+  </form>
+  </div><?php
+  ;
+}
+
+function wpl_options_menu(){
+	add_options_page( 'WP-PermaLauts', 'WP-PermaLauts', 8, __FILE__, 'wpl_options');
+}
+add_action('admin_menu', 'wpl_options_menu');
+
 remove_filter( 'sanitize_title', 'sanitize_title_with_dashes' );
 add_filter(    'sanitize_title', 'wpl_permalink'              );
 
@@ -100,7 +136,9 @@ add_filter('comment_text_rss',	'wpl_content');
 add_filter('comment_text',		'wpl_content');
 ***/
 
-add_action('wp_head', 'wpl_header');
-add_action('wp_footer', 'wpl_footer',99);
+if(get_option("wpl_show_footer") != "false") {	
+	add_action('wp_head', 'wpl_header');
+	add_action('wp_footer', 'wpl_footer',99);
+}
 
 ?>
