@@ -29,6 +29,7 @@ Selbst in der aktuellen Fassung von Wordpress werden die Permalinks ganz simpel 
 
 Korrekterweise werden Umlaute und das ß aber im Deutschen anders umgeschrieben, wenn man keine Möglichkeit hat, diese zu nutzen. So folgt dann: ä=ae, ö=oe, ü=ue und ß=ss.
 
+Plugin home: [WP PermaLauts](http://blogcraft.de/wordpress-plugins/wp-permalauts/) on blogcraft.de
 
 == Installation ==
 
