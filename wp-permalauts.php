@@ -2,16 +2,18 @@
 /*
 Plugin Name: WP-Permalauts
 Plugin URI: http://blogcraft.de/wordpress-plugins/wp-permalauts/
-Description: This plugin is base on o42-clean-umlauts. It transform the german umlauts into well-formed entities (especially for permalinks).
-Version: 0.2
+Description: This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts.
+Version: 0.3
 Author: Christoph Grabo
 Author URI: http://blogcraft.de/
 
-This plugin is based on o42-clean-umlauts. It transform the german umlauts into well-formed letters (especially for permalinks).
+This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts.
 
-Replaces german umlauts in permalinks, posts, comments and feeds.
+Replaces german umlauts in permalinks only! (All other sanitizing actions should be done natively by wordpress).
 
 */
+
+$WPL_VERSION = "0.3";
 
 #helper
 function u8e($c){
@@ -68,19 +70,37 @@ function wpl_content($content){
     return $content;
 } #wpl_content
 
-
-#add_filter ( 'hook_name', 'your_filter', [priority], [accepted_args] );
+function wpl_footer(){
+	/* because this plugin is free and open source, be so patient and let the small footer text - thank you! */
+	$s = base64_decode("
+PGRpdiBpZD0id3BsZm9vdGVyIj5UaGlzIGJsb2cgdXNlcyA8YSBocmVmPSJodHRwOi8vYmxvZ2Ny
+YWZ0LmRlL3dvcmRwcmVzcy1wbHVnaW5zL3dwLXBlcm1hbGF1dHMvIj5XUCBQZXJtYWxhdXRzPC9h
+PiAoY2xlYW4gZ2VybWFuIHVtbGF1dHMgaW4gcGVybWFsaW5rcykuIFNwZWNpYWw6IEl0J3MgdGhl
+IDxzdHJvbmc+PGEgaHJlZj0iaHR0cDovL21hbm5hei5jYy9wL3JldmllcnBob25lLyIgdGl0bGU9
+InJlVmllcnBob25lIj5yZVZpZXJwaG9uZTwvYT4gRWRpdGlvbiE8L3N0cm9uZz48L2Rpdj4=
+");
+	echo $s;
+}
+function wpl_header(){
+	/* because this plugin is free and open source, be so patient and let the small footer text - thank you! */
+	$s = '<style type="text/css">#wplfooter { text-align: center; }</style>';
+	echo $s;
+}
 
 remove_filter( 'sanitize_title', 'sanitize_title_with_dashes' );
 add_filter(    'sanitize_title', 'wpl_permalink'              );
 
+/*** normally not needed! (we only want to clean the permalink of posts)
+add_filter('the_title_rss',		'wpl_content');
+add_filter('the_title',			'wpl_content');
 add_filter('the_excerpt',		'wpl_content');
 add_filter('the_excerpt_rss',	'wpl_content');
 add_filter('the_content',		'wpl_content');
-add_filter('the_title_rss',		'wpl_content');
-add_filter('the_title',			'wpl_content');
 add_filter('comment_text_rss',	'wpl_content');
 add_filter('comment_text',		'wpl_content');
+***/
 
+add_action('wp_head', 'wpl_header');
+add_action('wp_footer', 'wpl_footer',99);
 
 ?>

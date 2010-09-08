@@ -3,8 +3,8 @@ Contributors: blogcrafter_chris
 Donate link: 
 Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
 Requires at least: 2.x
-Tested up to: 2.8.5
-Stable Tag: 0.2
+Tested up to: 3.0.1
+Stable Tag: 0.3
 
 Encoding/Converting German umlauts correctly for permalinks! The solution: WP PermaLauts!
 
@@ -17,9 +17,9 @@ Encoding/Converting German umlauts correctly for permalinks!
 
 Die Lösung / the solution: WP PermaLauts!
 
-It transforms the german umlauts into well-formed entities (especially for permalinks).
+This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts.
 
-(Replaces german umlauts in permalinks, posts, comments and feeds.)
+(Replaces german umlauts in permalinks.)
 
 = German description =
 
@@ -47,6 +47,10 @@ No options, no settings. Works fully in the background!
 
 
 == Changelog ==
+
+* Version 0.3
+
+	Removed some useless filters. We need only the permalink filter, nothing else.
 
 * Version 0.2
 
