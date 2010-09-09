@@ -70,3 +70,14 @@ No options, no settings. Works fully in the background!
 * Version 0.1
 
 	Initial Release
+	
+== Upgrade Notice ==
+
+= 0.4.1 =
+You can now switch the footer text on or off. Formatting via CSS id #wplfooter possible.
+
+= 0.4 =
+Please upgrade to version 0.4.1!
+
+= 0.3 =
+Please upgrade to version 0.4.1!
