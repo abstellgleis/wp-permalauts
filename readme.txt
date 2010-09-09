@@ -46,6 +46,10 @@ No options, no settings. Works fully in the background!
 
 	I hope, not! :-)
 
+* Since version 0.3 there is a footer text. It breaks my design.
+
+	Easy going. Do an update to version 0.4.1 and you can change visibility of the footer under Settings in Wordpress.
+	You also can hack the footer part with CSS, the ID of the box is `#wplfooter`
 
 == Changelog ==
 
