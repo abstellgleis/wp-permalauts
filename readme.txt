@@ -2,9 +2,9 @@
 Contributors: blogcrafter_chris
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7035372
 Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
-Requires at least: 2.x
+Requires at least: 2.0
 Tested up to: 3.0.1
-Stable Tag: 0.4.1
+Stable Tag: 0.4.2
 
 Encoding/Converting German umlauts correctly for permalinks! The solution: WP PermaLauts!
 
@@ -53,6 +53,10 @@ No options, no settings. Works fully in the background!
 
 == Changelog ==
 
+* Version 0.4.2
+
+	Footer link is now opt-in.
+
 * Version 0.4.1
 
 	Rerelease of version 0.4 (don't know why wordpress ignored last rollout)
@@ -76,6 +80,9 @@ No options, no settings. Works fully in the background!
 	Initial Release
 	
 == Upgrade Notice ==
+
+= 0.4.2 =
+Cleaned version without footer link as default!
 
 = 0.4.1 =
 You can now switch the footer text on or off. Formatting via CSS id #wplfooter possible.

@@ -3,7 +3,7 @@
 Plugin Name: WP-Permalauts
 Plugin URI: http://blogcraft.de/wordpress-plugins/wp-permalauts/
 Description: This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts.
-Version: 0.4.1
+Version: 0.4.2
 Author: Christoph Grabo
 Author URI: http://blogcraft.de/
 
@@ -13,7 +13,7 @@ Replaces german umlauts in permalinks only! (All other sanitizing actions should
 
 */
 
-$WPL_VERSION = "0.4.1";
+$WPL_VERSION = "0.4.2";
 
 #helper
 function u8e($c){
@@ -71,18 +71,16 @@ function wpl_content($content){
 } #wpl_content
 
 function wpl_footer(){
-	/* because this plugin is free and open source, be so patient and let the small footer text - thank you! */
-	$s = base64_decode("
-PGRpdiBpZD0id3BsZm9vdGVyIj5UaGlzIGJsb2cgdXNlcyA8YSBocmVmPSJodHRwOi8vYmxvZ2Ny
-YWZ0LmRlL3dvcmRwcmVzcy1wbHVnaW5zL3dwLXBlcm1hbGF1dHMvIj5XUCBQZXJtYWxhdXRzPC9h
-PiAoY2xlYW4gZ2VybWFuIHVtbGF1dHMgaW4gcGVybWFsaW5rcykuIFNwZWNpYWw6IEl0J3MgdGhl
-IDxzdHJvbmc+PGEgaHJlZj0iaHR0cDovL21hbm5hei5jYy9wL3JldmllcnBob25lLyIgdGl0bGU9
-InJlVmllcnBob25lIj5yZVZpZXJwaG9uZTwvYT4gRWRpdGlvbiE8L3N0cm9uZz48L2Rpdj4=
-");
+	$s = '<div id="wplfooter">This blog uses <a href="http://blogcraft.de/wordpress-plugins/wp-permalauts/">WP Permalauts</a> of <strong><a href="http://blogcraft.de/">blogcraft</a></strong> (clean german umlauts in permalinks).</strong></div>';
 	echo $s;
 }
+
+function wpl_header_admin(){
+	$s = '<style type="text/css">#wplfooter { text-align: center; } #wplfooter-preview { padding: 10px; background:#ccc; }</style>';
+	echo $s;
+}
+
 function wpl_header(){
-	/* because this plugin is free and open source, be so patient and let the small footer text - thank you! */
 	$s = '<style type="text/css">#wplfooter { text-align: center; }</style>';
 	echo $s;
 }
@@ -101,12 +99,17 @@ function wpl_options(){
 		<th scope="row">Show or hide footer text of PermaLauts</th>
 		<td>
 		  <select name="wpl_show_footer">
-				<option value="true" <?php if (get_option('wpl_show_footer') == 'true') print "selected"; ?>>Add footer text</option>
-				<option value="false" <?php if (get_option('wpl_show_footer') == 'false') print "selected"; ?>>Hide footer text</option>
+				<option value="visible" <?php if (get_option('wpl_show_footer') == 'visible') print "selected"; ?>>Visible Footer</option>
+				<option value="hidden" <?php if (get_option('wpl_show_footer') == 'hidden') print "selected"; ?>>Hidden Footer</option>
 		  </select>
-			  Leaving footer in your blog supports the developer of free software! Show your love!
 		</td>
 	</tr>
+	<tr><td colspan="2">
+			  Footer text preview:<br />
+			  <div id="wplfooter-preview">
+					<?php wpl_footer(); ?>
+			  </div>
+	</td></tr>
 	</table>
 	  <input type="hidden" name="action" value="update" />
 	  <input type="hidden" name="page_options" value="wpl_show_footer" />
@@ -119,7 +122,8 @@ function wpl_options(){
 }
 
 function wpl_options_menu(){
-	add_options_page( 'WP-PermaLauts', 'WP-PermaLauts', 8, __FILE__, 'wpl_options');
+	$plugin_page = add_options_page( 'WP-PermaLauts', 'WP-PermaLauts', 8, __FILE__, 'wpl_options');
+	add_action( 'admin_head-'. $plugin_page, 'wpl_header_admin' );
 }
 add_action('admin_menu', 'wpl_options_menu');
 
@@ -136,7 +140,7 @@ add_filter('comment_text_rss',	'wpl_content');
 add_filter('comment_text',		'wpl_content');
 ***/
 
-if(get_option("wpl_show_footer") != "false") {	
+if(get_option("wpl_show_footer") == "visible") {	
 	add_action('wp_head', 'wpl_header');
 	add_action('wp_footer', 'wpl_footer',99);
 }
