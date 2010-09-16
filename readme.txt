@@ -1,6 +1,6 @@
 === WP PermaLauts ===
 Contributors: blogcrafter_chris
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7035372
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ
 Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
 Requires at least: 2.0
 Tested up to: 3.0.1
