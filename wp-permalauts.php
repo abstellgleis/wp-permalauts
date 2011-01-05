@@ -3,7 +3,7 @@
 Plugin Name: WP-Permalauts
 Plugin URI: http://permalauts.de/
 Description: This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts.
-Version: 0.5.0.304
+Version: 0.5.1.304
 Author: Christoph Grabo
 Author URI: http://blogcraft.de/
 
@@ -13,7 +13,7 @@ Replaces german umlauts in permalinks only! (All other sanitizing actions should
 
 */
 
-$WPL_VERSION = "0.5.0.304";
+$WPL_VERSION = "0.5.1.304";
 
 #helper
 function u8e($c){
@@ -22,7 +22,10 @@ function u8e($c){
 function u8d($c){
 	return utf8_decode($c);
 } #u8d
-					
+
+function __wpl($s){ return __($s,'permalauts'); } /* <?php print __wpl(''); ?> */
+function _ewpl($s){ _e($s,'permalauts'); }        /* <?php _ewpl(''); ?>       */
+
 $wpl_chartable = array(
 	'raw'	  => array('ä'     ,'Ä'     ,'ö'     ,'Ö'     ,'ü'     ,'Ü'     ,'ß'      ),
 	'in'	  => array(chr(228),chr(196),chr(246),chr(214),chr(252),chr(220),chr(223) ),
@@ -71,8 +74,11 @@ function wpl_content($content){
 } #wpl_content
 
 function wpl_footer(){
-	$s = '<div id="wplfooter">This blog uses <a href="http://permalauts.de/">WP Permalauts</a> (clean german umlauts in permalinks) developed by <strong><a href="http://blogcraft.de/">blogcraft</a></strong>.</div>';
-	echo $s;
+  $str_i18n = __wpl("This blog uses %s (clean german umlauts in permalinks) developed by %s.");
+  $wpl_link = '<a href="http://permalauts.de/">WP Permalauts</a>';
+  $bc_link = '<strong><a href="http://blogcraft.de/">blogcraft</a></strong>';
+  $str_final = '<div id="wplfooter">'. sprintf($str_i18n,$wpl_link,$bc_link) .'</div>';
+	echo $str_final;
 }
 
 function wpl_header_admin(){
@@ -81,8 +87,6 @@ function wpl_header_admin(){
 	$s .= '  .wpl_admin_footer_info {border-top: 1px dotted #666;background: #ffcc66;padding: 10px;margin-top: 5px;text-align: center;}';
 	$s .= '  .wpl_admin_footer_info a {color: #001133;}';
 	$s .= '</style>';
-
-  
 	echo $s;
 }
 
@@ -97,36 +101,50 @@ function wpl_options(){
   };
 
   ?><div class="wrap">
-  <h2>WP PermaLauts</h2>
+  <h2>WP Permalauts</h2>
   <div>
     <p>
-      <strong>Important!</strong> This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)
+      <strong><?php _ewpl('Important!'); ?></strong> 
+      <?php _ewpl('This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)'); ?>
     </p>
   </div>
   <form method="post" action="options.php">
   <?php wp_nonce_field('update-options'); ?>
 	<table class="form-table">
 	<tr valign="top">
-		<th scope="row">What should be "cleaned" (sanitized) by Permalauts?</th>
+		<th scope="row"><?php _ewpl('What should be "cleaned" (sanitized) by Permalauts?'); ?></th>
 		<td>
-      Permalinks of: <br />
+      <?php _ewpl('Permalinks of'); ?>:<br />
 		  <select name="wpl_what2sanitize">
-				<option value="all" <?php if (get_option('wpl_what2sanitize') == 'all') print "selected"; ?>><strong>(recommended)</strong> Everything! <small>(posts, pages, categories, tags, ...)</small></option>
-				<option value="postpages" <?php if (get_option('wpl_what2sanitize') == 'postpages' or get_option('wpl_what2sanitize') == '') print "selected"; ?>>Posts and Pages</option>
-				<option value="categories" <?php if (get_option('wpl_what2sanitize') == 'categories') print "selected"; ?>>Categories</option>
-				<option value="taxonomies" <?php if (get_option('wpl_what2sanitize') == 'taxonomies') print "selected"; ?>>Taxonomies <small>(incl. categories, tags and maybe self defined tax.)</small></option>
-				<option value="nothing" <?php if (get_option('wpl_what2sanitize') == 'nothing') print "selected"; ?>>Nothing. (Why you should do that?)</option>
+				<option value="all" <?php if (get_option('wpl_what2sanitize') == 'all') print "selected"; ?>>
+          <?php _ewpl('Everything!'); ?> [<?php _ewpl('recommended'); ?>] | <?php _ewpl('For posts, pages, categories, tags, ...'); ?> 
+        </option>
+				<option value="postpages" <?php if (get_option('wpl_what2sanitize') == 'postpages' or get_option('wpl_what2sanitize') == '') print "selected"; ?>>
+          <?php _ewpl('Posts and Pages'); ?> | <?php _ewpl('Behavior of prior versions'); ?>
+        </option>
+				<option value="categories" <?php if (get_option('wpl_what2sanitize') == 'categories') print "selected"; ?>>
+          <?php _ewpl('Categories'); ?> | <?php _ewpl('Maybe someone need this only'); ?>
+        </option>
+				<option value="taxonomies" <?php if (get_option('wpl_what2sanitize') == 'taxonomies') print "selected"; ?>>
+          <?php _ewpl('Taxonomies'); ?> | <?php _ewpl('Incl. categories, tags and self defined taxonomies'); ?>
+        </option>
+				<option value="nothing" <?php if (get_option('wpl_what2sanitize') == 'nothing') print "selected"; ?>>
+          <?php _ewpl('Nothing'); ?> | <?php _ewpl('why you should do that?'); ?>
+        </option>
 		  </select>
       <br />
-      Default (after update or fresh installation) is <em>Permalinks of <strong>Posts and Pages</strong></em> (like in versions prior <strong>0.5.0.304</strong>).
+      <?php _ewpl('Default (after update or fresh installation) is'); ?>
+      <em><?php _ewpl('Permalinks of'); ?>
+      <strong><?php _ewpl('Posts and Pages'); ?></strong></em>
+      (<?php _ewpl('like in versions prior'); ?>  <strong>0.5.0.304</strong>).
 		</td>
 	</tr>
 	<tr valign="top">
-		<th scope="row">Show or hide footer text of PermaLauts</th>
+		<th scope="row"><?php _ewpl('Show or hide footer text of Permalauts'); ?></th>
 		<td>
 		  <select name="wpl_show_footer">
-				<option value="visible" <?php if (get_option('wpl_show_footer') == 'visible') print "selected"; ?>>Visible Footer</option>
-				<option value="hidden" <?php if (get_option('wpl_show_footer') == 'hidden') print "selected"; ?>>Hidden Footer</option>
+				<option value="visible" <?php if (get_option('wpl_show_footer') == 'visible') print "selected"; ?>><?php _ewpl('Visible Footer'); ?></option>
+				<option value="hidden" <?php if (get_option('wpl_show_footer') == 'hidden') print "selected"; ?>><?php _ewpl('Hidden Footer'); ?></option>
 		  </select>
 		</td>
 	</tr>
@@ -143,29 +161,28 @@ function wpl_options(){
 	<input type="submit" class="button-primary" value="<?php _e('Save Changes'); ?>" />
   </p>
   </form>
-  
-<div class="wpl_admin_footer_info">
-	Please support the developer of this plugin! 
-	<strong>Make a donation via 
-	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ">Paypal</a> 
-	or <a href="https://flattr.com/thing/62915/WP-PermaLauts-Wordpress-Plugin-blogcraft-de">flattr</a>. 
-	Thank you!</strong> <em>&mdash;<a href="http://blogcraft.de/">Blogcrafter Chris</a></em>
-</div>
-
-  
+  <div class="wpl_admin_footer_info">
+    <?php _ewpl('Please support the developer of this plugin!'); ?>
+    <strong>
+      <?php _ewpl('Make a donation via'); ?>
+      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ">Paypal</a> 
+      <?php _ewpl('or'); ?>
+      <a href="https://flattr.com/thing/62915/WP-PermaLauts-Wordpress-Plugin-blogcraft-de">flattr</a>. 
+      <?php _ewpl('Thank you!'); ?>
+    </strong> <em>&mdash;<a href="http://blogcraft.de/">Chris</a></em>
+  </div>
   </div><?php
   ;
 }
 
 function wpl_options_menu(){
-	$plugin_page = add_options_page( 'WP PermaLauts', 'WP PermaLauts', 8, __FILE__, 'wpl_options');
+	$plugin_page = add_options_page( 'WP Permalauts', '[!] Permalauts', 8, __FILE__, 'wpl_options');
 	add_action( 'admin_head-'. $plugin_page, 'wpl_header_admin' );
 }
 add_action('admin_menu', 'wpl_options_menu');
 
-
 /**
- * Add Settings link to plugins - code from GD Star Ratings (Thanks!)
+ * Add Settings link to plugins overview - code from GD Star Ratings (Thanks!)
  */
 function add_settings_link($links, $file) {
   static $this_plugin;
@@ -198,7 +215,7 @@ switch($wpl_what2sanitize) {
     remove_filter( 'sanitize_category', 'sanitize_title_with_dashes' );
     add_filter(    'sanitize_category', 'wpl_permalink'              );
     break;
-  case "postpages": /* default of versions prior 0.5 */
+  case "postpages": /* default of versions prior 0.5~ */
   default:
     remove_filter( 'sanitize_title',    'sanitize_title_with_dashes' );
     add_filter(    'sanitize_title',    'wpl_permalink'              );
