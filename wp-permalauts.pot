@@ -1,0 +1,147 @@
+# Copyright (C) 2010 WP-Permalauts
+# This file is distributed under the same license as the WP-Permalauts package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-Permalauts 0.5.1.304\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-permalauts\n"
+"POT-Creation-Date: 2011-01-05 15:19:52+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2011-01-05 16:30+0100\n"
+"Last-Translator: \n"
+"Language-Team: Christoph Grabo <blogcrafter@blogcraft.de>\n"
+"X-Poedit-Language: Deutsch\n"
+"X-Poedit-Country: Deutschland\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: wp-permalauts.php:77
+msgid "This blog uses %s (clean german umlauts in permalinks) developed by %s."
+msgstr "Dieses Blog nutzt %s (verbesserte Permalinks bei dt. Umlauten) entwickelt von %s."
+
+#: wp-permalauts.php:100
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Du hast nicht genügend Rechte um diese Seite aufzurufen."
+
+#: wp-permalauts.php:107
+msgid "Important!"
+msgstr "Wichtig!"
+
+#: wp-permalauts.php:108
+msgid "This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)"
+msgstr "Dieses Plugin kann nur die Permalinks von neuen Objekten anpassen. Alte Permalinks werden nie neu erstellt! (Das musst du leider manuell nachholen.)"
+
+#: wp-permalauts.php:117
+#: wp-permalauts.php:137
+msgid "Permalinks of"
+msgstr "Permalinks von"
+
+#: wp-permalauts.php:120
+msgid "Everything!"
+msgstr "Alles!"
+
+#: wp-permalauts.php:120
+msgid "recommended"
+msgstr "empfohlen"
+
+#: wp-permalauts.php:120
+msgid "For posts, pages, categories, tags, ..."
+msgstr "Für Beiträge, Seiten, Kategorien, Schlagwörter, ..."
+
+#: wp-permalauts.php:123
+#: wp-permalauts.php:138
+msgid "Posts and Pages"
+msgstr "Beiträge und Seiten"
+
+#: wp-permalauts.php:123
+msgid "Behavior of prior versions"
+msgstr "Verhalten wie in früheren Versionen"
+
+#: wp-permalauts.php:126
+msgid "Categories"
+msgstr "Kategorien"
+
+#: wp-permalauts.php:126
+msgid "Maybe someone need this only"
+msgstr "Vielleicht braucht das ja jemand mal"
+
+#: wp-permalauts.php:129
+msgid "Taxonomies"
+msgstr "Taxonomien"
+
+#: wp-permalauts.php:129
+msgid "Incl. categories, tags and self defined taxonomies"
+msgstr "Inkl. Kategorien, Schlagwörtern und selbst definierten Taxonomien"
+
+#: wp-permalauts.php:132
+msgid "Nothing"
+msgstr "Nichts"
+
+#: wp-permalauts.php:132
+msgid "Why you should do that?"
+msgstr "Warum solltest du das tun wollen?"
+
+#: wp-permalauts.php:136
+msgid "Default (after update or fresh installation) is"
+msgstr "Der Standard (nach einer frischen Installation bzw. einer Aktualisierung) ist"
+
+#: wp-permalauts.php:139
+msgid "like in versions prior"
+msgstr "wie in Versionen vor"
+
+#: wp-permalauts.php:143
+msgid "Show or hide footer text of Permalauts"
+msgstr "Zeige oder verstecke den Footer-Text von Permalauts"
+
+#: wp-permalauts.php:146
+msgid "Visible Footer"
+msgstr "Sichtbarer Footer-Text"
+
+#: wp-permalauts.php:147
+msgid "Hidden Footer"
+msgstr "Versteckter Footer-Text"
+
+#: wp-permalauts.php:161
+msgid "Save Changes"
+msgstr "Speichere Änderungen"
+
+#: wp-permalauts.php:165
+msgid "Please support the developer of this plugin!"
+msgstr "Bitte unterstütze den Entwickler dieses Plugins!"
+
+#: wp-permalauts.php:167
+msgid "Make a donation via"
+msgstr "Hilf mit einer Spende via"
+
+#: wp-permalauts.php:169
+msgid "or"
+msgstr "oder"
+
+#: wp-permalauts.php:171
+msgid "Thank you!"
+msgstr "Danke dir!"
+
+#: wp-permalauts.php:191
+msgid "Settings"
+msgstr "Einstellungen"
+
+#. Plugin Name of the plugin/theme
+msgid "WP-Permalauts"
+msgstr "WP Permalauts"
+
+#. Plugin URI of the plugin/theme
+msgid "http://permalauts.de/"
+msgstr "http://permalauts.de/"
+
+#. Description of the plugin/theme
+msgid "This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts."
+msgstr "Dieses Plugin überführt die deutschen Umlaute in bessere lesbare und gültige Zeichenketten in URLs (ausschließlich für Permalinks benötigt). Es basiert auf o42-clean-umlauts."
+
+#. Author of the plugin/theme
+msgid "Christoph Grabo"
+msgstr "Christoph Grabo"
+
+#. Author URI of the plugin/theme
+msgid "http://blogcraft.de/"
+msgstr "http://blogcraft.de/"
+
