@@ -15,6 +15,9 @@ Replaces german umlauts in permalinks only! (All other sanitizing actions should
 
 $WPL_VERSION = "0.5.1.304";
 
+$plugin_dir = basename(dirname(__FILE__));
+load_plugin_textdomain( 'permalauts', null, $plugin_dir );
+
 #helper
 function u8e($c){
 	return utf8_encode($c);
@@ -22,12 +25,6 @@ function u8e($c){
 function u8d($c){
 	return utf8_decode($c);
 } #u8d
-
-$plugin_dir = basename(dirname(__FILE__));
-load_plugin_textdomain( 'permalauts', null, $plugin_dir );
-
-function __wpl($s){ return __($s,'permalauts'); } /* <?php print __wpl(''); ?> */
-function _ewpl($s){ _e($s,'permalauts'); }        /* <?php _ewpl(''); ?>       */
 
 $wpl_chartable = array(
 	'raw'	  => array('ä'     ,'Ä'     ,'ö'     ,'Ö'     ,'ü'     ,'Ü'     ,'ß'      ),
@@ -77,7 +74,7 @@ function wpl_content($content){
 } #wpl_content
 
 function wpl_footer(){
-  $str_i18n = __wpl("This blog uses %s (clean german umlauts in permalinks) developed by %s.");
+  $str_i18n = __("This blog uses %s (clean german umlauts in permalinks) developed by %s.",'permalauts');
   $wpl_link = '<a href="http://permalauts.de/">WP Permalauts</a>';
   $bc_link = '<strong><a href="http://blogcraft.de/">blogcraft</a></strong>';
   $str_final = '<div id="wplfooter">'. sprintf($str_i18n,$wpl_link,$bc_link) .'</div>';
@@ -107,47 +104,47 @@ function wpl_options(){
   <h2>WP Permalauts</h2>
   <div>
     <p>
-      <strong><?php _ewpl('Important!'); ?></strong> 
-      <?php _ewpl('This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)'); ?>
+      <strong><?php _e('Important!','permalauts'); ?></strong> 
+      <?php _e('This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)','permalauts'); ?>
     </p>
   </div>
   <form method="post" action="options.php">
   <?php wp_nonce_field('update-options'); ?>
 	<table class="form-table">
 	<tr valign="top">
-		<th scope="row"><?php _ewpl('What should be "cleaned" (sanitized) by Permalauts?'); ?></th>
+		<th scope="row"><?php _e('What should be "cleaned" (sanitized,'permalauts') by Permalauts?'); ?></th>
 		<td>
-      <?php _ewpl('Permalinks of'); ?>:<br />
+      <?php _e('Permalinks of','permalauts'); ?>:<br />
 		  <select name="wpl_what2sanitize">
 				<option value="all" <?php if (get_option('wpl_what2sanitize') == 'all') print "selected"; ?>>
-          <?php _ewpl('Everything!'); ?> [<?php _ewpl('recommended'); ?>] | <?php _ewpl('For posts, pages, categories, tags, ...'); ?> 
+          <?php _e('Everything!','permalauts'); ?> [<?php _e('recommended','permalauts'); ?>] | <?php _e('For posts, pages, categories, tags, ...','permalauts'); ?> 
         </option>
 				<option value="postpages" <?php if (get_option('wpl_what2sanitize') == 'postpages' or get_option('wpl_what2sanitize') == '') print "selected"; ?>>
-          <?php _ewpl('Posts and Pages'); ?> | <?php _ewpl('Behavior of prior versions'); ?>
+          <?php _e('Posts and Pages','permalauts'); ?> | <?php _e('Behavior of prior versions','permalauts'); ?>
         </option>
 				<option value="categories" <?php if (get_option('wpl_what2sanitize') == 'categories') print "selected"; ?>>
-          <?php _ewpl('Categories'); ?> | <?php _ewpl('Maybe someone need this only'); ?>
+          <?php _e('Categories','permalauts'); ?> | <?php _e('Maybe someone need this only','permalauts'); ?>
         </option>
 				<option value="taxonomies" <?php if (get_option('wpl_what2sanitize') == 'taxonomies') print "selected"; ?>>
-          <?php _ewpl('Taxonomies'); ?> | <?php _ewpl('Incl. categories, tags and self defined taxonomies'); ?>
+          <?php _e('Taxonomies','permalauts'); ?> | <?php _e('Incl. categories, tags and self defined taxonomies','permalauts'); ?>
         </option>
 				<option value="nothing" <?php if (get_option('wpl_what2sanitize') == 'nothing') print "selected"; ?>>
-          <?php _ewpl('Nothing'); ?> | <?php _ewpl('why you should do that?'); ?>
+          <?php _e('Nothing','permalauts'); ?> | <?php _e('Why you should do that?','permalauts'); ?>
         </option>
 		  </select>
       <br />
-      <?php _ewpl('Default (after update or fresh installation) is'); ?>
-      <em><?php _ewpl('Permalinks of'); ?>
-      <strong><?php _ewpl('Posts and Pages'); ?></strong></em>
-      (<?php _ewpl('like in versions prior'); ?>  <strong>0.5.0.304</strong>).
+      <?php _e('Default (after update or fresh installation) is','permalauts'); ?>
+      <em><?php _e('Permalinks of','permalauts'); ?>
+      <strong><?php _e('Posts and Pages','permalauts'); ?></strong></em>
+      (<?php _e('like in versions prior','permalauts'); ?>  <strong>0.5.0.304</strong>).
 		</td>
 	</tr>
 	<tr valign="top">
-		<th scope="row"><?php _ewpl('Show or hide footer text of Permalauts'); ?></th>
+		<th scope="row"><?php _e('Show or hide footer text of Permalauts','permalauts'); ?></th>
 		<td>
 		  <select name="wpl_show_footer">
-				<option value="visible" <?php if (get_option('wpl_show_footer') == 'visible') print "selected"; ?>><?php _ewpl('Visible Footer'); ?></option>
-				<option value="hidden" <?php if (get_option('wpl_show_footer') == 'hidden') print "selected"; ?>><?php _ewpl('Hidden Footer'); ?></option>
+				<option value="visible" <?php if (get_option('wpl_show_footer') == 'visible') print "selected"; ?>><?php _e('Visible Footer','permalauts'); ?></option>
+				<option value="hidden" <?php if (get_option('wpl_show_footer') == 'hidden') print "selected"; ?>><?php _e('Hidden Footer','permalauts'); ?></option>
 		  </select>
 		</td>
 	</tr>
@@ -165,13 +162,13 @@ function wpl_options(){
   </p>
   </form>
   <div class="wpl_admin_footer_info">
-    <?php _ewpl('Please support the developer of this plugin!'); ?>
+    <?php _e('Please support the developer of this plugin!','permalauts'); ?>
     <strong>
-      <?php _ewpl('Make a donation via'); ?>
+      <?php _e('Make a donation via','permalauts'); ?>
       <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ">Paypal</a> 
-      <?php _ewpl('or'); ?>
+      <?php _e('or','permalauts'); ?>
       <a href="https://flattr.com/thing/62915/WP-PermaLauts-Wordpress-Plugin-blogcraft-de">flattr</a>. 
-      <?php _ewpl('Thank you!'); ?>
+      <?php _e('Thank you!','permalauts'); ?>
     </strong> <em>&mdash;<a href="http://blogcraft.de/">Chris</a></em>
   </div>
   </div><?php
@@ -179,7 +176,7 @@ function wpl_options(){
 }
 
 function wpl_options_menu(){
-	$plugin_page = add_options_page( 'WP Permalauts', '[!] Permalauts', 8, __FILE__, 'wpl_options');
+	$plugin_page = add_options_page( 'WP Permalauts', '[*] Permalauts', 8, __FILE__, 'wpl_options');
 	add_action( 'admin_head-'. $plugin_page, 'wpl_header_admin' );
 }
 add_action('admin_menu', 'wpl_options_menu');
