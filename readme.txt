@@ -3,8 +3,8 @@ Contributors: blogcrafter_chris
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ
 Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
 Requires at least: 2.0
-Tested up to: 3.0.1
-Stable Tag: 0.4.2
+Tested up to: 3.0.4
+Stable Tag: 0.5.0.304
 
 Encoding/Converting German umlauts correctly for permalinks! The solution: WP PermaLauts!
 
@@ -33,12 +33,15 @@ Plugin home: [WP PermaLauts](http://blogcraft.de/wordpress-plugins/wp-permalauts
 
 == Installation ==
 
+Use the Plugin installation system in your Wordpress system
+
+-OR-
+
 Upload "wp-permalauts.php" in wp-content/plugins/ . Then just activate it on your plugin management page.
 
 That's it, you're done!
 
-No options, no settings. Works fully in the background!
-
+Go to the Settings page for Permalauts and select, what should be sanitized (default: post and page permalinks).
 
 == Frequently Asked Questions ==
 
@@ -53,7 +56,11 @@ No options, no settings. Works fully in the background!
 
 == Changelog ==
 
-* Version 0.4.2
+* Version 0.5.0.304
+
+	Now it's possible to sanitize category/taxonomy permalinks. Settings page extended: Option list "What should be 'cleaned' (sanitized) by Permalauts?". Default after install/update: post and page permalinks
+
+  * Version 0.4.2
 
 	Footer link is now opt-in.
 
@@ -80,6 +87,9 @@ No options, no settings. Works fully in the background!
 	Initial Release
 	
 == Upgrade Notice ==
+
+= 0.5.0.304 =
+Category/Taxonomy permalinks can be cleaned by Permalauts! Go to Settings page to see options.
 
 = 0.4.2 =
 Cleaned version without footer link as default!
