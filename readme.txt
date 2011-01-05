@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
 Requires at least: 2.0
 Tested up to: 3.0.4
-Stable Tag: 0.5.0.304
+Stable Tag: 0.5.1.304
 
 Encoding/Converting German umlauts correctly for permalinks! The solution: WP Permalauts!
 
@@ -13,9 +13,10 @@ Encoding/Converting German umlauts correctly for permalinks! The solution: WP Pe
 
 Plugin home: [WP Permalauts](http://permalauts.de/)
 
-= NEW in version 0.5.0.304 =
+= NEW in version 0.5.1.304 =
 
 Permalauts can now sanitize permalinks of Posts, Pages, Categories and/or Taxonomies - selectable via Settings page.
+Basic internationalization of plugin settings. (Languages so far: German/Deutsch, English)
 
 So, please update!
 
@@ -72,6 +73,10 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 
 * Version 0.5.0.304
 
+  I18n of plugin settings.
+
+* Version 0.5.0.304
+
 	Now it's possible to sanitize category/taxonomy permalinks. Settings page extended: Option list "What should be 'cleaned' (sanitized) by Permalauts?". Default after install/update: post and page permalinks
 
   * Version 0.4.2
@@ -101,6 +106,9 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 	Initial Release
 	
 == Upgrade Notice ==
+
+= 0.5.1.304 =
+I18n of plugin settings.
 
 = 0.5.0.304 =
 Category/Taxonomy permalinks can be cleaned by Permalauts! Go to Settings page to see options.
