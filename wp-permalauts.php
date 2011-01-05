@@ -23,6 +23,9 @@ function u8d($c){
 	return utf8_decode($c);
 } #u8d
 
+$plugin_dir = basename(dirname(__FILE__));
+load_plugin_textdomain( 'permalauts', null, $plugin_dir );
+
 function __wpl($s){ return __($s,'permalauts'); } /* <?php print __wpl(''); ?> */
 function _ewpl($s){ _e($s,'permalauts'); }        /* <?php _ewpl(''); ?>       */
 
