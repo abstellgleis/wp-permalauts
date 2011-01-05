@@ -1,4 +1,4 @@
-=== WP PermaLauts ===
+=== WP Permalauts ===
 Contributors: blogcrafter_chris
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ
 Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
@@ -6,16 +6,26 @@ Requires at least: 2.0
 Tested up to: 3.0.4
 Stable Tag: 0.5.0.304
 
-Encoding/Converting German umlauts correctly for permalinks! The solution: WP PermaLauts!
+Encoding/Converting German umlauts correctly for permalinks! The solution: WP Permalauts!
 
 
 == Description ==
+
+Plugin home: [WP Permalauts](http://permalauts.de/)
+
+= NEW in version 0.5.0.304 =
+
+Permalauts can now sanitize permalinks of Posts, Pages, Categories and/or Taxonomies - selectable via Settings page.
+
+So, please update!
+
+= General =
 
 Deutsche Umlaute für Permalinks richtig umkodieren/konvertieren!
 
 Encoding/Converting German umlauts correctly for permalinks!
 
-Die Lösung / the solution: WP PermaLauts!
+Die Lösung / the solution: WP Permalauts!
 
 This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts.
 
@@ -29,9 +39,11 @@ Selbst in der aktuellen Fassung von Wordpress werden die Permalinks ganz simpel 
 
 Korrekterweise werden Umlaute und das ß aber im Deutschen anders umgeschrieben, wenn man keine Möglichkeit hat, diese zu nutzen. So folgt dann: ä=ae, ö=oe, ü=ue und ß=ss.
 
-Plugin home: [WP PermaLauts](http://blogcraft.de/wordpress-plugins/wp-permalauts/) on blogcraft.de
+Plugin home: [WP Permalauts](http://permalauts.de/)
 
 == Installation ==
+
+Plugin home: [WP Permalauts](http://permalauts.de/)
 
 Use the Plugin installation system in your Wordpress system
 
@@ -44,6 +56,8 @@ That's it, you're done!
 Go to the Settings page for Permalauts and select, what should be sanitized (default: post and page permalinks).
 
 == Frequently Asked Questions ==
+
+Plugin home: [WP Permalauts](http://permalauts.de/)
 
 * Do you really have questions?
 
