@@ -31,6 +31,10 @@ msgstr "Wichtig!"
 msgid "This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)"
 msgstr "Dieses Plugin kann nur die Permalinks von neuen Objekten anpassen. Alte Permalinks werden nie neu erstellt! (Das musst du leider manuell nachholen.)"
 
+#: wp-permalauts.php:115
+msgid "What should be \"cleaned\" (sanitized) by Permalauts?"
+msgstr "Was soll durch Permalauts \"gesäubert\" werden?"
+
 #: wp-permalauts.php:117
 #: wp-permalauts.php:137
 msgid "Permalinks of"

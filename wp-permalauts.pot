@@ -4,144 +4,146 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP-Permalauts 0.5.1.304\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-permalauts\n"
-"POT-Creation-Date: 2011-01-05 15:19:52+00:00\n"
+"POT-Creation-Date: 2011-01-05 16:32:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2011-01-05 16:30+0100\n"
-"Last-Translator: \n"
-"Language-Team: Christoph Grabo <blogcrafter@blogcraft.de>\n"
-"X-Poedit-Language: Deutsch\n"
-"X-Poedit-Country: Deutschland\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 
 #: wp-permalauts.php:77
 msgid "This blog uses %s (clean german umlauts in permalinks) developed by %s."
-msgstr "Dieses Blog nutzt %s (verbesserte Permalinks bei dt. Umlauten) entwickelt von %s."
+msgstr ""
 
 #: wp-permalauts.php:100
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Du hast nicht genügend Rechte um diese Seite aufzurufen."
+msgstr ""
 
 #: wp-permalauts.php:107
 msgid "Important!"
-msgstr "Wichtig!"
+msgstr ""
 
 #: wp-permalauts.php:108
-msgid "This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)"
-msgstr "Dieses Plugin kann nur die Permalinks von neuen Objekten anpassen. Alte Permalinks werden nie neu erstellt! (Das musst du leider manuell nachholen.)"
+msgid ""
+"This plugin can only modify permalinks of new items. Old permalinks will "
+"never be re-sanitized! (You have to do this manually.)"
+msgstr ""
 
-#: wp-permalauts.php:117
-#: wp-permalauts.php:137
+#: wp-permalauts.php:115
+msgid "What should be \"cleaned\" (sanitized) by Permalauts?"
+msgstr ""
+
+#: wp-permalauts.php:117 wp-permalauts.php:143
 msgid "Permalinks of"
-msgstr "Permalinks von"
+msgstr ""
 
 #: wp-permalauts.php:120
 msgid "Everything!"
-msgstr "Alles!"
+msgstr ""
 
-#: wp-permalauts.php:120
+#: wp-permalauts.php:121
 msgid "recommended"
-msgstr "empfohlen"
+msgstr ""
 
-#: wp-permalauts.php:120
+#: wp-permalauts.php:122
 msgid "For posts, pages, categories, tags, ..."
-msgstr "Für Beiträge, Seiten, Kategorien, Schlagwörter, ..."
+msgstr ""
 
-#: wp-permalauts.php:123
-#: wp-permalauts.php:138
+#: wp-permalauts.php:125 wp-permalauts.php:144
 msgid "Posts and Pages"
-msgstr "Beiträge und Seiten"
+msgstr ""
 
-#: wp-permalauts.php:123
+#: wp-permalauts.php:126
 msgid "Behavior of prior versions"
-msgstr "Verhalten wie in früheren Versionen"
+msgstr ""
 
-#: wp-permalauts.php:126
+#: wp-permalauts.php:129
 msgid "Categories"
-msgstr "Kategorien"
+msgstr ""
 
-#: wp-permalauts.php:126
+#: wp-permalauts.php:130
 msgid "Maybe someone need this only"
-msgstr "Vielleicht braucht das ja jemand mal"
+msgstr ""
 
-#: wp-permalauts.php:129
+#: wp-permalauts.php:133
 msgid "Taxonomies"
-msgstr "Taxonomien"
+msgstr ""
 
-#: wp-permalauts.php:129
+#: wp-permalauts.php:134
 msgid "Incl. categories, tags and self defined taxonomies"
-msgstr "Inkl. Kategorien, Schlagwörtern und selbst definierten Taxonomien"
+msgstr ""
 
-#: wp-permalauts.php:132
+#: wp-permalauts.php:137
 msgid "Nothing"
-msgstr "Nichts"
+msgstr ""
 
-#: wp-permalauts.php:132
+#: wp-permalauts.php:138
 msgid "Why you should do that?"
-msgstr "Warum solltest du das tun wollen?"
+msgstr ""
 
-#: wp-permalauts.php:136
+#: wp-permalauts.php:142
 msgid "Default (after update or fresh installation) is"
-msgstr "Der Standard (nach einer frischen Installation bzw. einer Aktualisierung) ist"
+msgstr ""
 
-#: wp-permalauts.php:139
+#: wp-permalauts.php:145
 msgid "like in versions prior"
-msgstr "wie in Versionen vor"
+msgstr ""
 
-#: wp-permalauts.php:143
+#: wp-permalauts.php:149
 msgid "Show or hide footer text of Permalauts"
-msgstr "Zeige oder verstecke den Footer-Text von Permalauts"
+msgstr ""
 
-#: wp-permalauts.php:146
+#: wp-permalauts.php:153
 msgid "Visible Footer"
-msgstr "Sichtbarer Footer-Text"
+msgstr ""
 
-#: wp-permalauts.php:147
+#: wp-permalauts.php:156
 msgid "Hidden Footer"
-msgstr "Versteckter Footer-Text"
-
-#: wp-permalauts.php:161
-msgid "Save Changes"
-msgstr "Speichere Änderungen"
-
-#: wp-permalauts.php:165
-msgid "Please support the developer of this plugin!"
-msgstr "Bitte unterstütze den Entwickler dieses Plugins!"
-
-#: wp-permalauts.php:167
-msgid "Make a donation via"
-msgstr "Hilf mit einer Spende via"
-
-#: wp-permalauts.php:169
-msgid "or"
-msgstr "oder"
+msgstr ""
 
 #: wp-permalauts.php:171
-msgid "Thank you!"
-msgstr "Danke dir!"
+msgid "Save Changes"
+msgstr ""
 
-#: wp-permalauts.php:191
+#: wp-permalauts.php:175
+msgid "Please support the developer of this plugin!"
+msgstr ""
+
+#: wp-permalauts.php:177
+msgid "Make a donation via"
+msgstr ""
+
+#: wp-permalauts.php:179
+msgid "or"
+msgstr ""
+
+#: wp-permalauts.php:181
+msgid "Thank you!"
+msgstr ""
+
+#: wp-permalauts.php:201
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "WP-Permalauts"
-msgstr "WP Permalauts"
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "http://permalauts.de/"
-msgstr "http://permalauts.de/"
+msgstr ""
 
 #. Description of the plugin/theme
-msgid "This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts."
-msgstr "Dieses Plugin überführt die deutschen Umlaute in bessere lesbare und gültige Zeichenketten in URLs (ausschließlich für Permalinks benötigt). Es basiert auf o42-clean-umlauts."
+msgid ""
+"This plugin transforms the german umlauts into well-formed entities (needed "
+"ONLY for permalinks). It's based on o42-clean-umlauts."
+msgstr ""
 
 #. Author of the plugin/theme
 msgid "Christoph Grabo"
-msgstr "Christoph Grabo"
+msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://blogcraft.de/"
-msgstr "http://blogcraft.de/"
-
+msgstr ""

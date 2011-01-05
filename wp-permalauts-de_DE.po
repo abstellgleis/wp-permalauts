@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2011-01-05 16:34+0100\n"
+"PO-Revision-Date: 2011-01-05 16:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: Christoph Grabo <blogcrafter@blogcraft.de>\n"
 "X-Poedit-Language: Deutsch\n"
@@ -30,6 +30,10 @@ msgstr "Wichtig!"
 #: wp-permalauts.php:108
 msgid "This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)"
 msgstr "Dieses Plugin kann nur die Permalinks von neuen Objekten anpassen. Alte Permalinks werden nie neu erstellt! (Das musst du leider manuell nachholen.)"
+
+#: wp-permalauts.php:115
+msgid "What should be \"cleaned\" (sanitized) by Permalauts?"
+msgstr "Was soll durch Permalauts \"gesäubert\" werden?"
 
 #: wp-permalauts.php:117
 #: wp-permalauts.php:137
