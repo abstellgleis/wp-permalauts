@@ -3,7 +3,7 @@
 Plugin Name: WP Permalauts
 Plugin URI: http://permalauts.de/
 Description: This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts.
-Version: 0.5.1.304
+Version: 0.6.0.304
 Author: Christoph Grabo
 Author URI: http://blogcraft.de/
 
@@ -13,18 +13,14 @@ Replaces german umlauts in permalinks only! (All other sanitizing actions should
 
 */
 
-$WPL_VERSION = "0.5.1.304";
+$WPL_VERSION = "0.6.0.304";
 
 $plugin_dir = basename(dirname(__FILE__));
 load_plugin_textdomain('wp-permalauts', null, $plugin_dir );
 
 #helper
-function u8e($c){
-	return utf8_encode($c);
-} #u8e
-function u8d($c){
-	return utf8_decode($c);
-} #u8d
+function u8e($c){	return utf8_encode($c); } #u8e
+function u8d($c){	return utf8_decode($c); } #u8d
 
 $wpl_chartable = array(
 	'raw'	  => array('ä'     ,'Ä'     ,'ö'     ,'Ö'     ,'ü'     ,'Ü'     ,'ß'      ),
@@ -35,49 +31,35 @@ $wpl_chartable = array(
 	'utf8'	=> array(u8e('ä'),u8e('Ä'),u8e('ö'),u8e('Ö'),u8e('ü'),u8e('Ü'),u8e('ß') )
 ); #chartable
 
-# the dashes won't be converted so far, but leave them here as an example
-
 function wpl_permalink($slug){
 	global $wpl_chartable;
-	
+    
     if (seems_utf8($slug)) {
-	$invalid_latin_chars = array(
-		chr(197).chr(146) => 'OE',
-		chr(197).chr(147) => 'oe',
-		chr(197).chr(160) => 'S',
-		chr(197).chr(189) => 'Z',
-		chr(197).chr(161) => 's',
-		chr(197).chr(190) => 'z',
-		chr(226).chr(130).chr(172) => 'E');
-	$slug = u8d(strtr($slug, $invalid_latin_chars));
+      $invalid_latin_chars = array(
+        chr(197).chr(146) => 'OE',
+        chr(197).chr(147) => 'oe',
+        chr(197).chr(160) => 'S',
+        chr(197).chr(189) => 'Z',
+        chr(197).chr(161) => 's',
+        chr(197).chr(190) => 'z',
+        chr(226).chr(130).chr(172) => 'E');
+      $slug = u8d(strtr($slug, $invalid_latin_chars));
     }
     
     $slug = str_replace($wpl_chartable['raw'], $wpl_chartable['perma'], $slug);
+    $slug = str_replace($wpl_chartable['utf8'], $wpl_chartable['perma'], $slug);
     $slug = str_replace($wpl_chartable['in'], $wpl_chartable['perma'], $slug);
+
+    $slug = sanitize_title_with_dashes($slug);
     
-	$slug = sanitize_title_with_dashes($slug);
-	
     return $slug;
 } #wpl_permalink
-
-function wpl_content($content){
-	global $wpl_chartable;
-	
-    if (strtoupper(get_option('blog_charset')) == 'UTF-8') {
-	$content = str_replace($wpl_chartable['utf8'], $wpl_chartable['feed'], $content);
-    }
-	
-    $content = str_replace($wpl_chartable['raw'], $wpl_chartable['feed'], $content);
-    $content = str_replace($wpl_chartable['in'], $wpl_chartable['feed'], $content);
-
-    return $content;
-} #wpl_content
 
 function wpl_footer(){
   $str_i18n = __("This blog uses %s (clean german umlauts in permalinks) developed by %s.",'wp-permalauts');
   $wpl_link = '<a href="http://permalauts.de/">WP Permalauts</a>';
   $bc_link = '<strong><a href="http://blogcraft.de/">blogcraft</a></strong>';
-  $str_final = '<div id="wplfooter">'. sprintf($str_i18n,$wpl_link,$bc_link) .'</div>';
+  $str_final = '<div id="wplfooter">'. sprintf($str_i18n,$wpl_link,$bc_link) .' <!-- $$ WPL version: '. $WPL_VERSION .' $$ --></div>';
 	echo $str_final;
 }
 
@@ -95,11 +77,10 @@ function wpl_header(){
 	echo $s;
 }
 
-function wpl_options(){
+function wpl_options_page(){
   if (!current_user_can('manage_options'))  {
     wp_die( __('You do not have sufficient permissions to access this page.') );
-  };
-
+  }
   ?><div class="wrap">
   <h2>WP Permalauts</h2>
   <div>
@@ -108,69 +89,51 @@ function wpl_options(){
       <?php print __('This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)','wp-permalauts'); ?>
     </p>
   </div>
+  <?php /* === MAGIC === */ ?>
   <form method="post" action="options.php">
-  <?php wp_nonce_field('update-options'); ?>
-	<table class="form-table">
-	<tr valign="top">
-		<th scope="row"><?php print __('What should be "cleaned" (sanitized) by Permalauts?','wp-permalauts'); ?></th>
-		<td>
-      <?php print __('Permalinks of','wp-permalauts'); ?>:<br />
-		  <select name="wpl_what2sanitize">
-				<option value="all" <?php if (get_option('wpl_what2sanitize') == 'all') print "selected"; ?>>
-          <?php print __('Everything!','wp-permalauts'); ?> 
-          [<?php print __('recommended','wp-permalauts'); ?>] | 
-          <?php print __('For posts, pages, categories, tags, ...','wp-permalauts'); ?> 
-        </option>
-				<option value="postpages" <?php if (get_option('wpl_what2sanitize') == 'postpages' or get_option('wpl_what2sanitize') == '') print "selected"; ?>>
-          <?php print __('Posts and Pages','wp-permalauts'); ?> | 
-          <?php print __('Behavior of prior versions','wp-permalauts'); ?>
-        </option>
-				<option value="categories" <?php if (get_option('wpl_what2sanitize') == 'categories') print "selected"; ?>>
-          <?php print __('Categories','wp-permalauts'); ?> | 
-          <?php print __('Maybe someone need this only','wp-permalauts'); ?>
-        </option>
-				<option value="taxonomies" <?php if (get_option('wpl_what2sanitize') == 'taxonomies') print "selected"; ?>>
-          <?php print __('Taxonomies','wp-permalauts'); ?> | 
-          <?php print __('Incl. categories, tags and self defined taxonomies','wp-permalauts'); ?>
-        </option>
-				<option value="nothing" <?php if (get_option('wpl_what2sanitize') == 'nothing') print "selected"; ?>>
-          <?php print __('Nothing','wp-permalauts'); ?> | 
-          <?php print __('Why you should do that?','wp-permalauts'); ?>
-        </option>
-		  </select>
-      <br />
-      <?php print __('Default (after update or fresh installation) is','wp-permalauts'); ?>
-      <em><?php print __('Permalinks of','wp-permalauts'); ?>
-      <strong><?php print __('Posts and Pages','wp-permalauts'); ?></strong></em>
-      (<?php print __('like in versions prior','wp-permalauts'); ?>  <strong>0.5.0.304</strong>).
-		</td>
-	</tr>
-	<tr valign="top">
-		<th scope="row"><?php print __('Show or hide footer text of Permalauts','wp-permalauts'); ?></th>
-		<td>
-		  <select name="wpl_show_footer">
-				<option value="visible" <?php if (get_option('wpl_show_footer') == 'visible') print "selected"; ?>>
-          <?php print __('Visible Footer','wp-permalauts'); ?>
-        </option>
-				<option value="hidden" <?php if (get_option('wpl_show_footer') == 'hidden') print "selected"; ?>>
-          <?php print __('Hidden Footer','wp-permalauts'); ?>
-        </option>
-		  </select>
-		</td>
-	</tr>
-	<tr><td colspan="2">
-			  Footer text preview:<br />
-			  <div id="wplfooter-preview">
-					<?php wpl_footer(); ?>
-			  </div>
-	</td></tr>
-	</table>
-	  <input type="hidden" name="action" value="update" />
-	  <input type="hidden" name="page_options" value="wpl_show_footer,wpl_what2sanitize" />
+  
+    <?php settings_fields('wpl_setting_options'); ?>
+    <?php $options = wpl_options_validate( wpl_options_defaults( get_option('wpl_options') ) ); // pre validation and defaults ?>
+    
+      <table class="form-table">
+        <tr valign="top">
+          <th scope="row"><?php print __('What should be permalautized?','wp-permalauts'); ?></th>
+          <td>
+            <label><input name="wpl_options[clean_pp]" type="checkbox" value="1" <?php checked('1', $options['clean_pp']); ?> /> 
+              <?php print __('Posts and Pages','wp-permalauts'); ?> </label>
+            <br />
+            <label><input name="wpl_options[clean_ct]" type="radio"  value="2" <?php checked('2', $options['clean_ct']); ?>> 
+              <?php print __('All Taxonomies','wp-permalauts'); ?> (<?php print __('including Categories','wp-permalauts'); ?>)</label>
+            <br />
+            <label><input name="wpl_options[clean_ct]" type="radio"  value="1" <?php checked('1', $options['clean_ct']); ?>> 
+              <?php print __('Categories only','wp-permalauts'); ?> </label>
+            <br />
+            <label><input name="wpl_options[clean_ct]" type="radio"  value="0" <?php checked('0', $options['clean_ct']); ?>> 
+              <?php print __('No Categories/Taxonomies','wp-permalauts'); ?></label>
+          </td>
+        </tr>
+        <tr valign="top">
+          <th scope="row"><?php print __('Enable or disable footer text of Permalauts promotion','wp-permalauts'); ?></th>
+          <td>
+            <input id="wpl_opt_footer" name="wpl_options[footer]" type="checkbox" value="1" <?php checked('1', $options['footer']); ?> /> 
+              <label for="wpl_opt_footer"><?php print __('Check to enable footer.','wp-permalauts'); ?> </label><br />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><?php print __('Preview of Footer','wp-permalauts'); ?></th>
+          <td>
+              <div id="wplfooter-preview">
+                <?php wpl_footer(); ?>
+              </div>
+          </td>
+        </tr>
+      </table>
   <p class="submit">
 	<input type="submit" class="button-primary" value="<?php print __('Save Changes'); ?>" />
   </p>
   </form>
+  <?php /* === MAGIC === */ ?>
+  
   <div class="wpl_admin_footer_info">
     <?php print __('Please support the developer of this plugin!','wp-permalauts'); ?>
     <strong>
@@ -181,15 +144,38 @@ function wpl_options(){
       <?php print __('Thank you!','wp-permalauts'); ?>
     </strong> <em>&mdash;<a href="http://blogcraft.de/">Chris</a></em>
   </div>
+  
   </div><?php
   ;
 }
 
 function wpl_options_menu(){
-	$plugin_page = add_options_page( 'WP Permalauts', '[*] Permalauts', 8, __FILE__, 'wpl_options');
+	$plugin_page = add_options_page( 'WP Permalauts', '[*] Permalauts', 8, __FILE__, 'wpl_options_page');
 	add_action( 'admin_head-'. $plugin_page, 'wpl_header_admin' );
 }
 add_action('admin_menu', 'wpl_options_menu');
+
+function wpl_options_defaults($input){
+  $defaults = array( 'clean_pp' => 1, 'clean_ct' => 2, 'footer' => -1 ); // pre defaults for unset values
+  $output = array( 'clean_pp' => 0, 'clean_ct' => 0, 'footer' => 0 ); // init with zeros
+  
+  $output['clean_pp'] = ( $input['clean_pp'] == 0 ? $defaults['clean_pp'] : $input['clean_pp'] );
+  $output['clean_ct'] = ( $input['clean_ct'] == 0 ? $defaults['clean_ct'] : $input['clean_ct'] );
+  $output['footer']   = ( $input['footer']   == 0 ? $defaults['footer']   : $input['footer']   );
+  
+  return $output;
+}
+function wpl_options_validate($input){  
+  $input['clean_pp'] = ( $input['clean_pp'] == 1 ? 1 : -1 );
+  $input['clean_ct'] = ( $input['clean_ct'] == 1 ? 1 : ( $input['clean_ct'] == 2 ? 2 : -1 ) ); // 2-cascade embedded-if (difficult to read?)
+  $input['footer']   = ( $input['footer']   == 1 ? 1 : -1 );
+  return $input;
+}
+
+function wpl_options_init(){
+    register_setting( 'wpl_setting_options', 'wpl_options', 'wpl_options_validate' );
+}
+add_action('admin_init', 'wpl_options_init' );
 
 /**
  * Add Settings link to plugins overview - code from GD Star Ratings (Thanks!)
@@ -205,35 +191,23 @@ function add_settings_link($links, $file) {
 }
 add_filter('plugin_action_links', 'add_settings_link', 10, 2 );
 
-// activate only the desired filters
-$wpl_what2sanitize = "" + get_option('wpl_what2sanitize');
-switch($wpl_what2sanitize) {
-  case "nothing":
-    // do nothing ...
-    break;
-  case "all":
-    remove_filter( 'sanitize_title',    'sanitize_title_with_dashes' );
-    add_filter(    'sanitize_title',    'wpl_permalink'              );
-    remove_filter( 'sanitize_term',     'sanitize_title_with_dashes' );
-    add_filter(    'sanitize_term',     'wpl_permalink'              );
-    break;
-  case "taxonomies":
-    remove_filter( 'sanitize_term',     'sanitize_title_with_dashes' );
-    add_filter(    'sanitize_term',     'wpl_permalink'              );
-    break;
-  case "categories":
-    remove_filter( 'sanitize_category', 'sanitize_title_with_dashes' );
-    add_filter(    'sanitize_category', 'wpl_permalink'              );
-    break;
-  case "postpages": /* default of versions prior 0.5~ */
-  default:
-    remove_filter( 'sanitize_title',    'sanitize_title_with_dashes' );
-    add_filter(    'sanitize_title',    'wpl_permalink'              );
-};
 
-if(get_option("wpl_show_footer") == "visible") {
+$current_wpl_options = wpl_options_validate( wpl_options_defaults( get_option('wpl_options') ) ); // always validate data! (and get defaults for unset values)
+if($current_wpl_options['clean_pp'] == 1) {
+  remove_filter( 'sanitize_title', 'sanitize_title_with_dashes' );
+  add_filter( 'sanitize_title',    'wpl_permalink' );
+};
+if($current_wpl_options['clean_ct'] == 1) {
+  remove_filter( 'sanitize_category', 'sanitize_title_with_dashes' );
+  add_filter( 'sanitize_category', 'wpl_permalink' );
+};
+if($current_wpl_options['clean_ct'] == 2) {
+  remove_filter( 'sanitize_term', 'sanitize_title_with_dashes' );
+  add_filter( 'sanitize_term',     'wpl_permalink' );
+};
+if($current_wpl_options['footer'] == 1) {
 	add_action('wp_head', 'wpl_header');
 	add_action('wp_footer', 'wpl_footer',99);
-}
+};
 
 /*wpl-eof*/ ?>
