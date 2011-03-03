@@ -2,9 +2,9 @@
 Contributors: blogcrafter_chris
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ
 Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
-Requires at least: 2.0
-Tested up to: 3.0.4
-Stable Tag: 0.6.0.304
+Requires at least: 3.1
+Tested up to: 3.1
+Stable Tag: 0.7.0
 
 Encoding/Converting German umlauts correctly for permalinks! The solution: WP Permalauts!
 
@@ -13,14 +13,12 @@ Encoding/Converting German umlauts correctly for permalinks! The solution: WP Pe
 
 Plugin home: [WP Permalauts](http://permalauts.de/)
 
-= NEW in version 0.6.0.304 =
+= NEW in version 0.7.0 =
 
-Hopefully fixed a bug (which caused not to sanitize correctly). Better settings page.
+Permalauts should now be Wordpress 3.1 compatible.
 
-Permalauts can now sanitize permalinks of Posts, Pages, Categories and/or Taxonomies - selectable via settings page.
-Basic internationalization of plugin settings. (Languages so far: German/Deutsch, English [default])
-
-So, please update!
+ONLY update IF you use the current Wordpress (3.1)!
+For versions including 3.0.4 everything should work with Permalauts 0.6.0.304.
 
 = General =
 
@@ -73,6 +71,14 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 
 == Changelog ==
 
+* Version 0.7.0
+
+  Wordpress 3.1 compatible version. Attention: Do NOT update if you use a Wordpress version < 3.1 (everything to 3.0.4 should work with Permalauts 0.6.0.304)
+
+* Version 0.6.0.304
+
+  BUGFIXed.
+
 * Version 0.5.0.304
 
   BUGFIX: No sanitization of URLs. Don't know why ...
@@ -113,6 +119,9 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 	Initial Release
 	
 == Upgrade Notice ==
+
+= 0.7.0 =
+Permalauts for Wordpress 3.1!
 
 = 0.6.0.304 =
 BUGFIX! Should work now! + Better settings page
