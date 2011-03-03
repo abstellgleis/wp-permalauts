@@ -15,16 +15,13 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 
 = NEW in version 0.7.0 =
 
-Permalauts should now be Wordpress 3.1 compatible.
-
-ONLY update IF you use the current Wordpress (3.1)!
-For versions including 3.0.4 everything should work with Permalauts 0.6.0.304.
+Permalauts is Wordpress 3.1 compatible now!
 
 = General =
 
-[DE] Umschreiben von deutschen Umlauten in URLs
+[DE] Umschreiben von deutschen Umlauten in URLs für Artikel, Seiten, Kategorien und Schlagwörter - nur mit Permalauts!
 
-[EN] Rewrite German umlauts for URLs
+[EN] Rewrite German umlauts for URLs for Posts, Pages, Categories and Tags - only with Permalauts!
 
 = Beschreibung (deutsch) =
 
@@ -35,6 +32,8 @@ Korrekterweise werden Umlaute und das ß aber im Deutschen anders umgeschrieben,
 So folgt dann: ä=ae, ö=oe, ü=ue und ß=ss.
 
 Dieses Plugin ist zugleich die Erneuerung und Fortführung des leider nicht mehr gepflegten o42-clean-umlauts (http://otaku42.de/2005/06/30/plugin-o42-clean-umlauts/).
+
+**Nur hier:** Es werden die Permalinks/Slugs von Beiträgen, Seiten, Kategorien und Schlagwörtern umgeschrieben! (Kann feinjustiert werden in den Einstellungen.)
 
 Plugin home: [WP Permalauts](http://permalauts.de/)
 
@@ -69,7 +68,7 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 
 * Version 0.7.0
 
-  Wordpress 3.1 compatible version. Attention: Do NOT update if you use a Wordpress version < 3.1 (everything to 3.0.4 should work with Permalauts 0.6.0.304)
+  Wordpress 3.1 compatible version.
 
 * Version 0.6.0.304
 
@@ -117,7 +116,7 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 == Upgrade Notice ==
 
 = 0.7.0 =
-Permalauts for Wordpress 3.1!
+Permalauts updated for Wordpress 3.1!
 
 = 0.6.0.304 =
 BUGFIX! Should work now! + Better settings page
