@@ -2,7 +2,7 @@
 Contributors: blogcrafter_chris
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ
 Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
-Requires at least: 3.1
+Requires at least: 2.x
 Tested up to: 3.1
 Stable Tag: 0.7.0
 
