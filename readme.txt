@@ -17,6 +17,8 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 
 Permalauts is Wordpress 3.1 compatible now!
 
+*Dear Plugin voters, please, also give a vote if it's **working**, too.*
+
 = General =
 
 [DE] Umschreiben von deutschen Umlauten in URLs für Artikel, Seiten, Kategorien und Schlagwörter - nur mit Permalauts!
