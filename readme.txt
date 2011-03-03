@@ -6,8 +6,8 @@ Requires at least: 3.1
 Tested up to: 3.1
 Stable Tag: 0.7.0
 
-Encoding/Converting German umlauts correctly for permalinks! The solution: WP Permalauts!
 
+Permalauts = Umschreiben von deutschen Umlauten in URLs / Rewrite German umlauts for URLs
 
 == Description ==
 
@@ -22,23 +22,19 @@ For versions including 3.0.4 everything should work with Permalauts 0.6.0.304.
 
 = General =
 
-Deutsche Umlaute für Permalinks richtig umkodieren/konvertieren!
+[DE] Umschreiben von deutschen Umlauten in URLs
 
-Encoding/Converting German umlauts correctly for permalinks!
+[EN] Rewrite German umlauts for URLs
 
-Die Lösung / the solution: WP Permalauts!
-
-This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts.
-
-(Replaces german umlauts in permalinks.)
-
-= German description =
-
-Dieses Plugin ist zugleich die Erneuerung und Fortführung des leider nicht mehr gepflegten o42-clean-umlauts (http://otaku42.de/2005/06/30/plugin-o42-clean-umlauts/).
+= Beschreibung (deutsch) =
 
 Selbst in der aktuellen Fassung von Wordpress werden die Permalinks ganz simpel auf den erlaubten ASCII-Zeichensatz heruntergebrochen, das resultiert dann zu folgenden Umformungen: ä=a, ö=o, ü=u und ß=s — wobei gerade die letzte Umformung sehr unschön anmutet.
 
-Korrekterweise werden Umlaute und das ß aber im Deutschen anders umgeschrieben, wenn man keine Möglichkeit hat, diese zu nutzen. So folgt dann: ä=ae, ö=oe, ü=ue und ß=ss.
+Korrekterweise werden Umlaute und das ß aber im Deutschen anders umgeschrieben, wenn man keine Möglichkeit hat, diese zu nutzen.
+
+So folgt dann: ä=ae, ö=oe, ü=ue und ß=ss.
+
+Dieses Plugin ist zugleich die Erneuerung und Fortführung des leider nicht mehr gepflegten o42-clean-umlauts (http://otaku42.de/2005/06/30/plugin-o42-clean-umlauts/).
 
 Plugin home: [WP Permalauts](http://permalauts.de/)
 
