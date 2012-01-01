@@ -3,7 +3,7 @@
 Plugin Name: WP Permalauts
 Plugin URI: http://permalauts.de/
 Description: This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts.
-Version: 0.7.0
+Version: 0.8.0
 Author: Christoph Grabo
 Author URI: http://blogcraft.de/
 
@@ -11,23 +11,22 @@ This plugin transforms the german umlauts into well-formed entities (needed ONLY
 
 Replaces german umlauts in permalinks only! (All other sanitizing actions should be done natively by wordpress).
 */
-$WPL_VERSION = "0.7.0";
+$WPL_VERSION = "0.8.0";
 
 $plugin_dir = basename(dirname(__FILE__));
 load_plugin_textdomain('wp-permalauts', null, $plugin_dir );
 
-#helper
-function u8e($c){	return utf8_encode($c); } #u8e
-function u8d($c){	return utf8_decode($c); } #u8d
+function u8e($c){	return utf8_encode($c); }
+function u8d($c){	return utf8_decode($c); }
 
 $wpl_chartable = array(
+	'perma'	=> array('ae'    ,'Ae'    ,'oe'    ,'Oe'    ,'ue'    ,'Ue'    ,'ss'     ),
 	'raw'	  => array('ä'     ,'Ä'     ,'ö'     ,'Ö'     ,'ü'     ,'Ü'     ,'ß'      ),
 	'in'	  => array(chr(228),chr(196),chr(246),chr(214),chr(252),chr(220),chr(223) ),
-	'perma'	=> array('ae'    ,'Ae'    ,'oe'    ,'Oe'    ,'ue'    ,'Ue'    ,'ss'     ),
 	'post'	=> array('&auml;','&Auml;','&ouml;','&Ouml;','&uuml;','&Uuml;','&szlig;'),
 	'feed'	=> array('&#228;','&#196;','&#246;','&#214;','&#252;','&#220;','&#223;' ),
 	'utf8'	=> array(u8e('ä'),u8e('Ä'),u8e('ö'),u8e('Ö'),u8e('ü'),u8e('Ü'),u8e('ß') )
-); #chartable
+);
 
 function wpl_permalink($slug){
 	global $wpl_chartable;
@@ -44,27 +43,26 @@ function wpl_permalink($slug){
       $slug = u8d(strtr($slug, $invalid_latin_chars));
     }
 
-    $slug = str_replace($wpl_chartable['raw'], $wpl_chartable['perma'], $slug);
+    $slug = str_replace($wpl_chartable['raw'],  $wpl_chartable['perma'], $slug);
     $slug = str_replace($wpl_chartable['utf8'], $wpl_chartable['perma'], $slug);
-    $slug = str_replace($wpl_chartable['in'], $wpl_chartable['perma'], $slug);
-
-    //$slug = sanitize_title_with_dashes($slug);
+    $slug = str_replace($wpl_chartable['in'],   $wpl_chartable['perma'], $slug);
+    $slug = str_replace($wpl_chartable['post'], $wpl_chartable['perma'], $slug);
 
     return $slug;
-} #wpl_permalink
+}
 
 function wpl_permalink_with_dashes($slug){
   $slug = wpl_permalink($slug);
   $slug = sanitize_title_with_dashes($slug);
   return $slug;
-} #wpl_permalink_with_dashes
+}
 
 function wpl_restore_raw_title( $title, $raw_title="", $context="" ) {
 	if ( $context == 'save' )
 		return $raw_title;
 	else
 		return $title;
-} #wpl_restore_raw_title
+}
 
 function wpl_footer(){
   $str_i18n = __("This blog uses %s (clean german umlauts in permalinks) developed by %s.",'wp-permalauts');
@@ -72,7 +70,7 @@ function wpl_footer(){
   $bc_link = '<strong><a href="http://blogcraft.de/">blogcraft</a></strong>';
   $str_final = '<div id="wplfooter">'. sprintf($str_i18n,$wpl_link,$bc_link) .' <!-- $$ WPL version: '. $WPL_VERSION .' $$ --></div>';
 	echo $str_final;
-} #wpl_footer
+}
 
 function wpl_header_admin(){
 	$s  = '<style type="text/css">';
@@ -81,12 +79,12 @@ function wpl_header_admin(){
 	$s .= '  .wpl_admin_footer_info a {color: #001133;}';
 	$s .= '</style>';
 	echo $s;
-} #wpl_header_admin
+}
 
 function wpl_header(){
 	$s = '<style type="text/css">#wplfooter { text-align: center; }</style>';
 	echo $s;
-} #wpl_header
+}
 
 function wpl_options_page(){
   global $WPL_VERSION;
@@ -94,7 +92,7 @@ function wpl_options_page(){
     wp_die( __('You do not have sufficient permissions to access this page.') );
   }
   ?><div class="wrap">
-  <h2>WP Permalauts</h2>
+  <h2>WP Permalauts <small>v<?php echo $WPL_VERSION; ?></small></h2>
   <div>
     <p>
       <strong><?php print __('Important!','wp-permalauts'); ?></strong>
@@ -147,7 +145,7 @@ function wpl_options_page(){
   <?php /* === MAGIC === */ ?>
 
   <div class="wpl_admin_footer_info">
-    WPL Version: <?php echo $WPL_VERSION; ?> | 
+    WPL Version: <?php echo $WPL_VERSION; ?> |
     <?php print __('Please support the developer of this plugin!','wp-permalauts'); ?>
     <strong>
       <?php print __('Make a donation via','wp-permalauts'); ?>
@@ -160,12 +158,12 @@ function wpl_options_page(){
 
   </div><?php
   ;
-} #wpl_options_page
+}
 
 function wpl_options_menu(){
 	$plugin_page = add_options_page( 'WP Permalauts', '[*] Permalauts', 8, __FILE__, 'wpl_options_page');
 	add_action( 'admin_head-'. $plugin_page, 'wpl_header_admin' );
-} #wpl_options_menu
+}
 add_action('admin_menu', 'wpl_options_menu');
 
 function wpl_options_defaults($input){
@@ -177,22 +175,19 @@ function wpl_options_defaults($input){
   $output['footer']   = ( $input['footer']   == 0 ? $defaults['footer']   : $input['footer']   );
 
   return $output;
-} #wpl_options_defaults
+}
 function wpl_options_validate($input){
   $input['clean_pp'] = ( $input['clean_pp'] == 1 ? 1 : -1 );
   $input['clean_ct'] = ( $input['clean_ct'] == 1 ? 1 : ( $input['clean_ct'] == 2 ? 2 : -1 ) ); // 2-cascade embedded-if (difficult to read?)
   $input['footer']   = ( $input['footer']   == 1 ? 1 : -1 );
   return $input;
-} #wpl_options_validate
+}
 
 function wpl_options_init(){
     register_setting( 'wpl_setting_options', 'wpl_options', 'wpl_options_validate' );
-} #wpl_options_init
+}
 add_action('admin_init', 'wpl_options_init' );
 
-/**
- * Add Settings link to plugins overview - code from GD Star Ratings (Thanks!)
- */
 function add_settings_link($links, $file) {
   static $this_plugin;
   if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
@@ -201,11 +196,11 @@ function add_settings_link($links, $file) {
      array_unshift($links, $settings_link);
   }
   return $links;
-} #add_settings_link
+}
 add_filter('plugin_action_links', 'add_settings_link', 10, 2 );
 
 
-$current_wpl_options = wpl_options_validate( wpl_options_defaults( get_option('wpl_options') ) ); // always validate data! (and get defaults for unset values)
+$current_wpl_options = wpl_options_validate( wpl_options_defaults( get_option('wpl_options') ) );
 
 if($current_wpl_options['clean_pp'] == 1) {
   remove_filter( 'sanitize_title', 'sanitize_title_with_dashes' );
@@ -227,4 +222,4 @@ if($current_wpl_options['footer'] == 1) {
 	add_action('wp_footer', 'wpl_footer',99);
 };
 
-/*wpl-eof*/ ?>
+?>

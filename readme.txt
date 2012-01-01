@@ -3,21 +3,17 @@ Contributors: blogcrafter_chris
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ
 Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
 Requires at least: 2.x
-Tested up to: 3.1
-Stable Tag: 0.7.0
+Tested up to: 3.3
+Stable Tag: 0.8.0
 
 
-Permalauts = Umschreiben von deutschen Umlauten in URLs / Rewrite German umlauts for URLs
+Umschreiben von deutschen Umlauten in URLs (Permalinks)
 
 == Description ==
 
 Plugin home: [WP Permalauts](http://permalauts.de/)
 
-= NEW in version 0.7.0 =
-
-Permalauts is Wordpress 3.1 compatible now!
-
-*Dear Plugin voters, please, also give a vote if it's **working**, too.*
+*NEW in Version **0.8.0**: Windows Livewriter should be supported now.*
 
 = General =
 
@@ -68,6 +64,10 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 
 == Changelog ==
 
+* Version 0.8.0
+
+  Windows Livewriter support. Compatibility check: WP 3.3 works.
+
 * Version 0.7.0
 
   Wordpress 3.1 compatible version.
@@ -114,8 +114,11 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 * Version 0.1
 
 	Initial Release
-	
+
 == Upgrade Notice ==
+
+= 0.8.0 =
+Users of Windows Livewriter should upgrade to get better permalauts support.
 
 = 0.7.0 =
 Permalauts updated for Wordpress 3.1!
