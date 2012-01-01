@@ -49,20 +49,9 @@ That's it, you're done!
 
 Go to the Settings page for Permalauts and select, what should be sanitized (default: post and page permalinks).
 
-== Frequently Asked Questions ==
+== Changelog ==
 
 Plugin home: [WP Permalauts](http://permalauts.de/)
-
-* Do you really have questions?
-
-	I hope, not! :-)
-
-* Since version 0.3 there is a footer text. It breaks my design.
-
-	Easy going. Do an update to version 0.4.1 and you can change visibility of the footer under Settings in Wordpress.
-	You also can hack the footer part with CSS, the ID of the box is `#wplfooter`
-
-== Changelog ==
 
 * Version 0.8.0
 
