@@ -3,7 +3,7 @@
 Plugin Name: WP Permalauts
 Plugin URI: http://permalauts.de/
 Description: This plugin transforms the german umlauts into well-formed entities (needed ONLY for permalinks). It's based on o42-clean-umlauts.
-Version: 0.8.0
+Version: 1.0.0
 Author: Christoph Grabo
 Author URI: http://blogcraft.de/
 
@@ -11,7 +11,7 @@ This plugin transforms the german umlauts into well-formed entities (needed ONLY
 
 Replaces german umlauts in permalinks only! (All other sanitizing actions should be done natively by wordpress).
 */
-$WPL_VERSION = "0.8.0";
+$WPL_VERSION = "1.0.0";
 
 $plugin_dir = basename(dirname(__FILE__));
 load_plugin_textdomain('wp-permalauts', null, $plugin_dir );
