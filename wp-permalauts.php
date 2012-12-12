@@ -11,7 +11,6 @@ This plugin transforms the german umlauts into well-formed entities (needed ONLY
 
 Replaces german umlauts in permalinks only! (All other sanitizing actions should be done natively by wordpress).
 */
-$WPL_VERSION = "1.0.0";
 
 $plugin_dir = basename(dirname(__FILE__));
 load_plugin_textdomain( 'wp-permalauts', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -64,42 +63,18 @@ function wpl_restore_raw_title( $title, $raw_title="", $context="" ) {
 		return $title;
 }
 
-function wpl_footer(){
-  $str_i18n = __("This blog uses %s (clean german umlauts in permalinks) developed by %s.",'wp-permalauts');
-  $wpl_link = '<a href="http://permalauts.de/">WP Permalauts</a>';
-  $bc_link = '<strong><a href="http://blogcraft.de/">blogcraft</a></strong>';
-  $str_final = '<div id="wplfooter">'. sprintf($str_i18n,$wpl_link,$bc_link) .' <!-- $$ WPL version: '. $WPL_VERSION .' $$ --></div>';
-	echo $str_final;
-}
-
-function wpl_header_admin(){
-	$s  = '<style type="text/css">';
-	$s .= '  #wplfooter { text-align: center; } #wplfooter-preview { padding: 10px; background:#ccc; }';
-	$s .= '  .wpl_admin_footer_info {border-top: 1px dotted #666;background: #ffcc66;padding: 10px;margin-top: 5px;text-align: center;}';
-	$s .= '  .wpl_admin_footer_info a {color: #001133;}';
-	$s .= '</style>';
-	echo $s;
-}
-
-function wpl_header(){
-	$s = '<style type="text/css">#wplfooter { text-align: center; }</style>';
-	echo $s;
-}
-
 function wpl_options_page(){
-  global $WPL_VERSION;
   if (!current_user_can('manage_options'))  {
     wp_die( __('You do not have sufficient permissions to access this page.') );
   }
   ?><div class="wrap">
-  <h2>WP Permalauts <small>v<?php echo $WPL_VERSION; ?></small></h2>
+  <h2>Permalauts</h2>
   <div>
     <p>
       <strong><?php print __('Important!','wp-permalauts'); ?></strong>
       <?php print __('This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)','wp-permalauts'); ?>
     </p>
   </div>
-  <?php /* === MAGIC === */ ?>
   <form method="post" action="options.php">
 
     <?php settings_fields('wpl_setting_options'); ?>
@@ -122,64 +97,30 @@ function wpl_options_page(){
               <?php print __('No Categories/Taxonomies','wp-permalauts'); ?></label>
           </td>
         </tr>
-        <tr valign="top">
-          <th scope="row"><?php print __('Enable or disable footer text of Permalauts promotion','wp-permalauts'); ?></th>
-          <td>
-            <input id="wpl_opt_footer" name="wpl_options[footer]" type="checkbox" value="1" <?php checked('1', $options['footer']); ?> />
-              <label for="wpl_opt_footer"><?php print __('Check to enable footer.','wp-permalauts'); ?> </label><br />
-          </td>
-        </tr>
-        <tr>
-          <th scope="row"><?php print __('Preview of Footer','wp-permalauts'); ?></th>
-          <td>
-              <div id="wplfooter-preview">
-                <?php wpl_footer(); ?>
-              </div>
-          </td>
-        </tr>
       </table>
   <p class="submit">
 	<input type="submit" class="button-primary" value="<?php print __('Save Changes'); ?>" />
   </p>
   </form>
-  <?php /* === MAGIC === */ ?>
-
-  <div class="wpl_admin_footer_info">
-    WPL Version: <?php echo $WPL_VERSION; ?> |
-    <?php print __('Please support the developer of this plugin!','wp-permalauts'); ?>
-    <strong>
-      <?php print __('Make a donation via','wp-permalauts'); ?>
-      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ">Paypal</a>
-      <?php print __('or','wp-permalauts'); ?>
-      <a href="https://flattr.com/thing/62915/WP-PermaLauts-Wordpress-Plugin-blogcraft-de">flattr</a>.
-      <?php print __('Thank you!','wp-permalauts'); ?>
-    </strong> <em>&mdash;<a href="http://blogcraft.de/">Chris</a></em>
-  </div>
-
-  </div><?php
-  ;
-}
+  </div><?php ;}
 
 function wpl_options_menu(){
 	$plugin_page = add_options_page( 'WP Permalauts', 'Permalauts', 'manage_options', __FILE__, 'wpl_options_page');
-	add_action( 'admin_head-'. $plugin_page, 'wpl_header_admin' );
 }
 add_action('admin_menu', 'wpl_options_menu');
 
 function wpl_options_defaults($input){
-  $defaults = array( 'clean_pp' => 1, 'clean_ct' => 2, 'footer' => -1 ); // pre defaults for unset values
-  $output = array( 'clean_pp' => 0, 'clean_ct' => 0, 'footer' => 0 ); // init with zeros
+  $defaults = array( 'clean_pp' => 1, 'clean_ct' => 2 ); // pre defaults for unset values
+  $output = array( 'clean_pp' => 0, 'clean_ct' => 0 ); // init with zeros
 
   $output['clean_pp'] = ( $input['clean_pp'] == 0 ? $defaults['clean_pp'] : $input['clean_pp'] );
   $output['clean_ct'] = ( $input['clean_ct'] == 0 ? $defaults['clean_ct'] : $input['clean_ct'] );
-  $output['footer']   = ( $input['footer']   == 0 ? $defaults['footer']   : $input['footer']   );
 
   return $output;
 }
 function wpl_options_validate($input){
   $input['clean_pp'] = ( $input['clean_pp'] == 1 ? 1 : -1 );
   $input['clean_ct'] = ( $input['clean_ct'] == 1 ? 1 : ( $input['clean_ct'] == 2 ? 2 : -1 ) ); // 2-cascade embedded-if (difficult to read?)
-  $input['footer']   = ( $input['footer']   == 1 ? 1 : -1 );
   return $input;
 }
 
@@ -217,9 +158,4 @@ if($current_wpl_options['clean_ct'] == 2) {
   add_filter( 'sanitize_term', 'wpl_restore_raw_title', 9, 3 );
   add_filter( 'sanitize_term', 'wpl_permalink_with_dashes', 10);
 };
-if($current_wpl_options['footer'] == 1) {
-	add_action('wp_head', 'wpl_header');
-	add_action('wp_footer', 'wpl_footer',99);
-};
-
 ?>
