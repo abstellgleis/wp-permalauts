@@ -34,6 +34,8 @@ Dieses Plugin ist zugleich die Erneuerung und Fortführung des leider nicht mehr
 **Nur hier:** Es werden die Permalinks/Slugs von Beiträgen, Seiten, Kategorien und Schlagwörtern umgeschrieben! (Kann feinjustiert werden in den Einstellungen.)
 
 Plugin home: [WP Permalauts](http://permalauts.de/)
+GitHub repo: [https://github.com/kaffee-mit-milch/wp-permalauts](https://github.com/kaffee-mit-milch/wp-permalauts)
+Help to translate the plugin at [https://translate.foe-services.de/projects/wp-permalauts](https://translate.foe-services.de/projects/wp-permalauts)
 
 == Installation ==
 

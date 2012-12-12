@@ -14,7 +14,7 @@ Replaces german umlauts in permalinks only! (All other sanitizing actions should
 $WPL_VERSION = "1.0.0";
 
 $plugin_dir = basename(dirname(__FILE__));
-load_plugin_textdomain('wp-permalauts', null, $plugin_dir );
+load_plugin_textdomain( 'wp-permalauts', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 function u8e($c){	return utf8_encode($c); }
 function u8d($c){	return utf8_decode($c); }
@@ -161,7 +161,7 @@ function wpl_options_page(){
 }
 
 function wpl_options_menu(){
-	$plugin_page = add_options_page( 'WP Permalauts', '[*] Permalauts', 8, __FILE__, 'wpl_options_page');
+	$plugin_page = add_options_page( 'WP Permalauts', 'Permalauts', 'manage_options', __FILE__, 'wpl_options_page');
 	add_action( 'admin_head-'. $plugin_page, 'wpl_header_admin' );
 }
 add_action('admin_menu', 'wpl_options_menu');
@@ -205,7 +205,7 @@ $current_wpl_options = wpl_options_validate( wpl_options_defaults( get_option('w
 if($current_wpl_options['clean_pp'] == 1) {
   remove_filter( 'sanitize_title', 'sanitize_title_with_dashes' );
   add_filter( 'sanitize_title', 'wpl_restore_raw_title', 9, 3 );
-  add_filter( 'sanitize_title',    'wpl_permalink_with_dashes', 10);
+  add_filter( 'sanitize_title', 'wpl_permalink_with_dashes', 10);
 };
 if($current_wpl_options['clean_ct'] == 1) {
   remove_filter( 'sanitize_category', 'sanitize_title_with_dashes' );
@@ -215,7 +215,7 @@ if($current_wpl_options['clean_ct'] == 1) {
 if($current_wpl_options['clean_ct'] == 2) {
   remove_filter( 'sanitize_term', 'sanitize_title_with_dashes' );
   add_filter( 'sanitize_term', 'wpl_restore_raw_title', 9, 3 );
-  add_filter( 'sanitize_term',     'wpl_permalink_with_dashes', 10);
+  add_filter( 'sanitize_term', 'wpl_permalink_with_dashes', 10);
 };
 if($current_wpl_options['footer'] == 1) {
 	add_action('wp_head', 'wpl_header');
