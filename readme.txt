@@ -1,27 +1,27 @@
 === WP Permalauts ===
-Contributors: blogcrafter_chris
+Contributors: blogcrafter_chris, cfoellmann
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ
-Tags: permalinks, umlauts, german, deutsch, encoding, decoding, letters
+Tags: permalinks, umlauts, umlaute, url, umwandeln, rewrite, german, deutsch, encoding, decoding, letters
 Requires at least: 2.x
-Tested up to: 3.3.1
-Stable Tag: 1.0.0
+Tested up to: 3.5
+Stable Tag: 1.0.1
 
 
-Umschreiben von deutschen Umlauten in URLs (Permalinks)
+Deutsche Umlaute in Permalinks von WordPress
 
 == Description ==
 
 Plugin home: [WP Permalauts](http://permalauts.de/)
 
-*NEW since Version **0.8.0**: Windows Livewriter should be supported now.*
-
 = General =
 
-[DE] Umschreiben von deutschen Umlauten in URLs für Artikel, Seiten, Kategorien und Schlagwörter - nur mit Permalauts!
+[DE] Umschreiben von deutschen Umlauten in URLs für Artikel, Seiten, Kategorien und Schlagwörter - nur mit **WP Permalauts!**
 
 [EN] Rewrite German umlauts for URLs for Posts, Pages, Categories and Tags - only with Permalauts!
 
-= Beschreibung (deutsch) =
+*The following plugin description will be in German only, because the target audience are German users.*
+
+= Beschreibung =
 
 Selbst in der aktuellen Fassung von Wordpress werden die Permalinks ganz simpel auf den erlaubten ASCII-Zeichensatz heruntergebrochen, das resultiert dann zu folgenden Umformungen: ä=a, ö=o, ü=u und ß=s — wobei gerade die letzte Umformung sehr unschön anmutet.
 
@@ -45,7 +45,7 @@ Use the Plugin installation system in your Wordpress system
 
 -OR-
 
-Upload "wp-permalauts.php" in wp-content/plugins/ . Then just activate it on your plugin management page.
+Upload "wp-permalauts" folder in wp-content/plugins/ . Then just activate it on your plugin management page.
 
 That's it, you're done!
 
@@ -54,6 +54,10 @@ Go to the Settings page for Permalauts and select, what should be sanitized (def
 == Changelog ==
 
 Plugin home: [WP Permalauts](http://permalauts.de/)
+
+* Version 1.0.1
+
+  Code cleanups. Compatibility check: WP 3.5 works.
 
 * Version 1.0.0
 
@@ -84,7 +88,7 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 
 	Now it's possible to sanitize category/taxonomy permalinks. Settings page extended: Option list "What should be 'cleaned' (sanitized) by Permalauts?". Default after install/update: post and page permalinks
 
-  * Version 0.4.2
+* Version 0.4.2
 
 	Footer link is now opt-in.
 
@@ -111,6 +115,9 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 	Initial Release
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Code cleanups. Compatibility check: WP 3.5 works.
 
 = 1.0.0 =
 MIT/X11 license added.
