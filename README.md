@@ -1,6 +1,6 @@
 # WP Permalauts
 
-Deutsche Umlaute in URLs von WordPress
+Deutsche Umlaute in Permalinks von WordPress
 
 ## Meta
 
