@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: permalinks, umlauts, umlaute, url, umwandeln, rewrite, german, deutsch, encoding, decoding, letters
 Requires at least: 2.x
 Tested up to: 3.5
-Stable Tag: 1.0.1
+Stable Tag: 1.0.2
 
 
 Deutsche Umlaute in Permalinks von WordPress
@@ -55,7 +55,7 @@ Go to the Settings page for Permalauts and select, what should be sanitized (def
 
 Plugin home: [WP Permalauts](http://permalauts.de/)
 
-* Version 1.0.1
+* Version 1.0.2
 
   Code cleanups. Compatibility check: WP 3.5 works.
 
@@ -116,7 +116,7 @@ Plugin home: [WP Permalauts](http://permalauts.de/)
 
 == Upgrade Notice ==
 
-= 1.0.1 =
+= 1.0.2 =
 Code cleanups. Compatibility check: WP 3.5 works.
 
 = 1.0.0 =
