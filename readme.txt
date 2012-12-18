@@ -1,5 +1,5 @@
 === WP Permalauts ===
-Contributors: blogcrafter_chris, cfoellmann
+Contributors: blogcrafter_chris, Foe Services Labs
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7386WKAAVYWQ
 Tags: permalinks, umlauts, umlaute, url, umwandeln, rewrite, german, deutsch, encoding, decoding, letters
 Requires at least: 2.x
@@ -33,9 +33,9 @@ Dieses Plugin ist zugleich die Erneuerung und Fortführung des leider nicht mehr
 
 **Nur hier:** Es werden die Permalinks/Slugs von Beiträgen, Seiten, Kategorien und Schlagwörtern umgeschrieben! (Kann feinjustiert werden in den Einstellungen.)
 
-Plugin home: [WP Permalauts](http://permalauts.de/)
-GitHub repo: [https://github.com/kaffee-mit-milch/wp-permalauts](https://github.com/kaffee-mit-milch/wp-permalauts)
-Help to translate the plugin at [https://translate.foe-services.de/projects/wp-permalauts](https://translate.foe-services.de/projects/wp-permalauts)
+* Plugin home: [WP Permalauts](http://permalauts.de/)
+* GitHub repo: [https://github.com/kaffee-mit-milch/wp-permalauts](https://github.com/kaffee-mit-milch/wp-permalauts)
+* Help to translate the plugin at [https://translate.foe-services.de/projects/wp-permalauts](https://translate.foe-services.de/projects/wp-permalauts)
 
 == Installation ==
 
