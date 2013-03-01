@@ -70,11 +70,11 @@ function wpl_options_page(){
     wp_die( __('You do not have sufficient permissions to access this page.') );
   }
   ?><div class="wrap">
-  <h2>Permalauts</h2>
+  <h2><?php _e('Permalauts','wp-permalauts'); ?></h2>
   <div>
     <p>
-      <strong><?php print __('Important!','wp-permalauts'); ?></strong>
-      <?php print __('This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)','wp-permalauts'); ?>
+      <strong><?php _e('Important!','wp-permalauts'); ?></strong>
+      <?php _e('This plugin can only modify permalinks of new items. Old permalinks will never be re-sanitized! (You have to do this manually.)','wp-permalauts'); ?>
     </p>
   </div>
   <form method="post" action="options.php">
@@ -84,30 +84,30 @@ function wpl_options_page(){
 
       <table class="form-table">
         <tr valign="top">
-          <th scope="row"><?php print __('What should be permalautized?','wp-permalauts'); ?></th>
+          <th scope="row"><?php _e('What should be permalautized?','wp-permalauts'); ?></th>
           <td>
             <label><input name="wpl_options[clean_pp]" type="checkbox" value="1" <?php checked('1', $options['clean_pp']); ?> />
-              <?php print __('Posts and Pages','wp-permalauts'); ?> </label>
+              <?php _e('Posts and Pages','wp-permalauts'); ?> </label>
             <br />
             <label><input name="wpl_options[clean_ct]" type="radio"  value="2" <?php checked('2', $options['clean_ct']); ?>>
-              <?php print __('All Taxonomies','wp-permalauts'); ?> (<?php print __('including Categories','wp-permalauts'); ?>)</label>
+              <?php _e('All Taxonomies','wp-permalauts'); ?> (<?php _e('including Categories','wp-permalauts'); ?>)</label>
             <br />
             <label><input name="wpl_options[clean_ct]" type="radio"  value="1" <?php checked('1', $options['clean_ct']); ?>>
-              <?php print __('Categories only','wp-permalauts'); ?> </label>
+              <?php _e('Categories only','wp-permalauts'); ?> </label>
             <br />
             <label><input name="wpl_options[clean_ct]" type="radio"  value="0" <?php checked('0', $options['clean_ct']); ?>>
-              <?php print __('No Categories/Taxonomies','wp-permalauts'); ?></label>
+              <?php _e('No Categories/Taxonomies','wp-permalauts'); ?></label>
           </td>
         </tr>
       </table>
   <p class="submit">
-	<input type="submit" class="button-primary" value="<?php print __('Save Changes'); ?>" />
+	<input type="submit" class="button-primary" value="<?php _e('Save Changes'); ?>" />
   </p>
   </form>
   </div><?php ;}
 
 function wpl_options_menu(){
-	$plugin_page = add_options_page( 'WP Permalauts', 'Permalauts', 'manage_options', __FILE__, 'wpl_options_page');
+	$plugin_page = add_options_page( __('WP Permalauts','wp-permalauts'), __('Permalauts','wp-permalauts'), 'manage_options', __FILE__, 'wpl_options_page');
 }
 add_action('admin_menu', 'wpl_options_menu');
 
