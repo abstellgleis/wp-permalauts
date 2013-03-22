@@ -17,20 +17,20 @@ Replaces german umlauts in permalinks only! (All other sanitizing actions should
 $plugin_dir = basename(dirname(__FILE__));
 load_plugin_textdomain( 'wp-permalauts', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
-function u8e($c){	return utf8_encode($c); }
-function u8d($c){	return utf8_decode($c); }
+function u8e($c){ return utf8_encode($c); }
+function u8d($c){ return utf8_decode($c); }
 
 $wpl_chartable = array(
-	'perma'	=> array('ae'    ,'Ae'    ,'oe'    ,'Oe'    ,'ue'    ,'Ue'    ,'ss'     ),
-	'raw'	=> array('ä'     ,'Ä'     ,'ö'     ,'Ö'     ,'ü'     ,'Ü'     ,'ß'      ),
-	'in'	=> array(chr(228),chr(196),chr(246),chr(214),chr(252),chr(220),chr(223) ),
-	'post'	=> array('&auml;','&Auml;','&ouml;','&Ouml;','&uuml;','&Uuml;','&szlig;'),
-	'feed'	=> array('&#228;','&#196;','&#246;','&#214;','&#252;','&#220;','&#223;' ),
-	'utf8'	=> array(u8e('ä'),u8e('Ä'),u8e('ö'),u8e('Ö'),u8e('ü'),u8e('Ü'),u8e('ß') )
+  'perma' => array('ae'    ,'Ae'    ,'oe'    ,'Oe'    ,'ue'    ,'Ue'    ,'ss'     ),
+  'raw'   => array('ä'     ,'Ä'     ,'ö'     ,'Ö'     ,'ü'     ,'Ü'     ,'ß'      ),
+  'in'    => array(chr(228),chr(196),chr(246),chr(214),chr(252),chr(220),chr(223) ),
+  'post'  => array('&auml;','&Auml;','&ouml;','&Ouml;','&uuml;','&Uuml;','&szlig;'),
+  'feed'  => array('&#228;','&#196;','&#246;','&#214;','&#252;','&#220;','&#223;' ),
+  'utf8'  => array(u8e('ä'),u8e('Ä'),u8e('ö'),u8e('Ö'),u8e('ü'),u8e('Ü'),u8e('ß') )
 );
 
 function wpl_permalink($slug){
-	global $wpl_chartable;
+  global $wpl_chartable;
 
     if (seems_utf8($slug)) {
       $invalid_latin_chars = array(
@@ -59,10 +59,10 @@ function wpl_permalink_with_dashes($slug){
 }
 
 function wpl_restore_raw_title( $title, $raw_title="", $context="" ) {
-	if ( $context == 'save' )
-		return $raw_title;
-	else
-		return $title;
+  if ( $context == 'save' )
+    return $raw_title;
+  else
+    return $title;
 }
 
 function wpl_options_page(){
@@ -86,28 +86,36 @@ function wpl_options_page(){
         <tr valign="top">
           <th scope="row"><?php _e('What should be permalautized?','wp-permalauts'); ?></th>
           <td>
-            <label><input name="wpl_options[clean_pp]" type="checkbox" value="1" <?php checked('1', $options['clean_pp']); ?> />
-              <?php _e('Posts and Pages','wp-permalauts'); ?> </label>
+            <label>
+              <input name="wpl_options[clean_pp]" type="checkbox" value="1" <?php checked('1', $options['clean_pp']); ?> />
+              <?php print _e('Posts, Pages and all custom post types','wp-permalauts'); ?>
+            </label>
             <br />
-            <label><input name="wpl_options[clean_ct]" type="radio"  value="2" <?php checked('2', $options['clean_ct']); ?>>
-              <?php _e('All Taxonomies','wp-permalauts'); ?> (<?php _e('including Categories','wp-permalauts'); ?>)</label>
+            <label>
+              <input name="wpl_options[clean_ct]" type="radio"  value="2" <?php checked('2', $options['clean_ct']); ?>>
+              <?php print _e('All Taxonomies','wp-permalauts'); ?> (<?php print __('including Categories','wp-permalauts'); ?>)
+            </label>
             <br />
-            <label><input name="wpl_options[clean_ct]" type="radio"  value="1" <?php checked('1', $options['clean_ct']); ?>>
-              <?php _e('Categories only','wp-permalauts'); ?> </label>
+            <label>
+              <input name="wpl_options[clean_ct]" type="radio"  value="1" <?php checked('1', $options['clean_ct']); ?>>
+              <?php print _e('Categories only','wp-permalauts'); ?>
+            </label>
             <br />
-            <label><input name="wpl_options[clean_ct]" type="radio"  value="0" <?php checked('0', $options['clean_ct']); ?>>
-              <?php _e('No Categories/Taxonomies','wp-permalauts'); ?></label>
+            <label>
+              <input name="wpl_options[clean_ct]" type="radio"  value="0" <?php checked('0', $options['clean_ct']); ?>>
+              <?php print _e('No Categories/Taxonomies','wp-permalauts'); ?>
+            </label>
           </td>
         </tr>
       </table>
   <p class="submit">
-	<input type="submit" class="button-primary" value="<?php _e('Save Changes'); ?>" />
+  <input type="submit" class="button-primary" value="<?php print _e('Save Changes'); ?>" />
   </p>
   </form>
   </div><?php ;}
 
 function wpl_options_menu(){
-	$plugin_page = add_options_page( __('WP Permalauts','wp-permalauts'), __('Permalauts','wp-permalauts'), 'manage_options', __FILE__, 'wpl_options_page');
+  $plugin_page = add_options_page( __('WP Permalauts','wp-permalauts'), __('Permalauts','wp-permalauts'), 'manage_options', __FILE__, 'wpl_options_page');
 }
 add_action('admin_menu', 'wpl_options_menu');
 
