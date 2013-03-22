@@ -1,5 +1,19 @@
 # Changelog
 
+## Version 1.1.0 (2013-03-22 05:04:05 +0100)
+
+* Bump version to 1.1.0
+* Add media file name sanitizer
+* Sanitize whitespaces
+* Merge pull request #6 from Foe-Services-Labs/master
+* minor gettext fixes
+* Update readme.txt
+* Add Changelog.md
+* Ignore tools directory
+* Ignore svn subdirectory
+* Merge pull request #4 from cfoellmann/master
+* translation support for plugin description in wp-admin
+
 ## Version 1.0.2 (2012-12-15 20:05:30 +0100)
 
 * Bump version to 1.0.2

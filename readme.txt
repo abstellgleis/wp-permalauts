@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: permalinks, umlauts, umlaute, url, umwandeln, rewrite, german, deutsch, encoding, decoding, letters
 Requires at least: 2.x
 Tested up to: 3.5
-Stable Tag: 1.0.2
+Stable Tag: 1.1.0
 License: MIT/X11
 
 Deutsche Umlaute in Permalinks von WordPress
