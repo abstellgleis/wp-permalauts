@@ -1,92 +1,74 @@
-# Copyright (C) 2010 WP Permalauts
+# Copyright (C) 2013 WP Permalauts
 # This file is distributed under the same license as the WP Permalauts package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Permalauts 0.6.0.304\n"
+"Project-Id-Version: WP Permalauts 1.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-permalauts\n"
-"POT-Creation-Date: 2011-01-07 14:15:58+00:00\n"
+"POT-Creation-Date: 2013-03-22 04:36:03+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: wp-permalauts.php:59
-msgid "This blog uses %s (clean german umlauts in permalinks) developed by %s."
-msgstr ""
-
-#: wp-permalauts.php:82
+#: wp-permalauts.php:75
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: wp-permalauts.php:88
+#: wp-permalauts.php:78 wp-permalauts.php:128
+msgid "Permalauts"
+msgstr ""
+
+#: wp-permalauts.php:81
 msgid "Important!"
 msgstr ""
 
-#: wp-permalauts.php:89
+#: wp-permalauts.php:82
 msgid ""
 "This plugin can only modify permalinks of new items. Old permalinks will "
 "never be re-sanitized! (You have to do this manually.)"
 msgstr ""
 
-#: wp-permalauts.php:100
+#: wp-permalauts.php:92
 msgid "What should be permalautized?"
 msgstr ""
 
-#: wp-permalauts.php:103
-msgid "Posts and Pages"
+#: wp-permalauts.php:96
+msgid "Posts, Pages and all custom post types"
 msgstr ""
 
-#: wp-permalauts.php:106
+#: wp-permalauts.php:101
 msgid "All Taxonomies"
 msgstr ""
 
-#: wp-permalauts.php:106
+#: wp-permalauts.php:101
 msgid "including Categories"
 msgstr ""
 
-#: wp-permalauts.php:109
+#: wp-permalauts.php:106
 msgid "Categories only"
 msgstr ""
 
-#: wp-permalauts.php:112
+#: wp-permalauts.php:111
 msgid "No Categories/Taxonomies"
 msgstr ""
 
 #: wp-permalauts.php:116
-msgid "Enable or disable footer text of Permalauts promotion"
+msgid "Media"
 msgstr ""
 
-#: wp-permalauts.php:119
-msgid "Check to enable footer."
-msgstr ""
-
-#: wp-permalauts.php:123
-msgid "Preview of Footer"
-msgstr ""
-
-#: wp-permalauts.php:132
+#: wp-permalauts.php:122
 msgid "Save Changes"
 msgstr ""
 
-#: wp-permalauts.php:138
-msgid "Please support the developer of this plugin!"
+#. #-#-#-#-#  plugin.pot (WP Permalauts 1.0.2)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: wp-permalauts.php:128
+msgid "WP Permalauts"
 msgstr ""
 
-#: wp-permalauts.php:140
-msgid "Make a donation via"
-msgstr ""
-
-#: wp-permalauts.php:142
-msgid "or"
-msgstr ""
-
-#: wp-permalauts.php:144
-msgid "Thank you!"
-msgstr ""
-
-#: wp-permalauts.php:187
+#: wp-permalauts.php:158
 msgid "Settings"
 msgstr ""
 
