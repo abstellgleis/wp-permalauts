@@ -58,6 +58,11 @@ function wpl_permalink_with_dashes($slug){
   return $slug;
 }
 
+function wpl_permalink_for_media($slug){
+  $slug = wpl_permalink($slug);
+  return $slug;
+}
+
 function wpl_restore_raw_title( $title, $raw_title="", $context="" ) {
   if ( $context == 'save' )
     return $raw_title;
@@ -105,6 +110,11 @@ function wpl_options_page(){
               <input name="wpl_options[clean_ct]" type="radio"  value="0" <?php checked('0', $options['clean_ct']); ?>>
               <?php print _e('No Categories/Taxonomies','wp-permalauts'); ?>
             </label>
+            <br />
+            <label>
+              <input name="wpl_options[clean_m]" type="checkbox" value="1" <?php checked('1', $options['clean_m']); ?> />
+              <?php print _e('Media','wp-permalauts'); ?>
+            </label>
           </td>
         </tr>
       </table>
@@ -120,17 +130,19 @@ function wpl_options_menu(){
 add_action('admin_menu', 'wpl_options_menu');
 
 function wpl_options_defaults($input){
-  $defaults = array( 'clean_pp' => 1, 'clean_ct' => 2 ); // pre defaults for unset values
-  $output = array( 'clean_pp' => 0, 'clean_ct' => 0 ); // init with zeros
+  $defaults = array( 'clean_pp' => 1, 'clean_ct' => 2, 'clean_m' => 1 ); // pre defaults for unset values
+  $output   = array( 'clean_pp' => 0, 'clean_ct' => 0, 'clean_m' => 0 ); // init with zeros
 
   $output['clean_pp'] = ( $input['clean_pp'] == 0 ? $defaults['clean_pp'] : $input['clean_pp'] );
   $output['clean_ct'] = ( $input['clean_ct'] == 0 ? $defaults['clean_ct'] : $input['clean_ct'] );
+  $output['clean_m']  = ( $input['clean_m']  == 0 ? $defaults['clean_m']  : $input['clean_m']  );
 
   return $output;
 }
 function wpl_options_validate($input){
   $input['clean_pp'] = ( $input['clean_pp'] == 1 ? 1 : -1 );
   $input['clean_ct'] = ( $input['clean_ct'] == 1 ? 1 : ( $input['clean_ct'] == 2 ? 2 : -1 ) ); // 2-cascade embedded-if (difficult to read?)
+  $input['clean_m']  = ( $input['clean_m']  == 1 ? 1 : -1 );
   return $input;
 }
 
@@ -168,4 +180,10 @@ if($current_wpl_options['clean_ct'] == 2) {
   add_filter( 'sanitize_term', 'wpl_restore_raw_title', 9, 3 );
   add_filter( 'sanitize_term', 'wpl_permalink_with_dashes', 10);
 };
+
+if($current_wpl_options['clean_m'] == 1) {
+  add_filter( 'sanitize_file_name', 'wpl_restore_raw_title', 9, 3 );
+  add_filter( 'sanitize_file_name', 'wpl_permalink_for_media', 10);
+};
+
 ?>
