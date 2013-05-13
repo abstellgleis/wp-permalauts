@@ -64,7 +64,7 @@ function wpl_permalink_for_media($slug){
 }
 
 function wpl_restore_raw_title( $title, $raw_title="", $context="" ) {
-  if ( $context == 'save' )
+  if ( $context === 'save' )
     return $raw_title;
   else
     return $title;
@@ -97,17 +97,17 @@ function wpl_options_page(){
             </label>
             <br />
             <label>
-              <input name="wpl_options[clean_ct]" type="radio"  value="2" <?php checked('2', $options['clean_ct']); ?>>
+              <input name="wpl_options[clean_ct]" type="radio" value="2" <?php checked('2', $options['clean_ct']); ?> />
               <?php print _e('All Taxonomies','wp-permalauts'); ?> (<?php print __('including Categories','wp-permalauts'); ?>)
             </label>
             <br />
             <label>
-              <input name="wpl_options[clean_ct]" type="radio"  value="1" <?php checked('1', $options['clean_ct']); ?>>
+              <input name="wpl_options[clean_ct]" type="radio" value="1" <?php checked('1', $options['clean_ct']); ?> />
               <?php print _e('Categories only','wp-permalauts'); ?>
             </label>
             <br />
             <label>
-              <input name="wpl_options[clean_ct]" type="radio"  value="0" <?php checked('0', $options['clean_ct']); ?>>
+              <input name="wpl_options[clean_ct]" type="radio" value="0" <?php checked('0', $options['clean_ct']); ?> />
               <?php print _e('No Categories/Taxonomies','wp-permalauts'); ?>
             </label>
             <br />
@@ -119,7 +119,7 @@ function wpl_options_page(){
         </tr>
       </table>
   <p class="submit">
-  <input type="submit" class="button-primary" value="<?php print _e('Save Changes'); ?>" />
+    <input type="submit" class="button-primary" value="<?php print _e('Save Changes'); ?>" />
   </p>
   </form>
   </div><?php ;}
@@ -155,7 +155,7 @@ function add_settings_link($links, $file) {
   static $this_plugin;
   if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
   if ($file == $this_plugin){
-    $settings_link = '<strong><a href="options-general.php?page=wp-permalauts/wp-permalauts.php"  style="color:#093;">'.__("Settings").'</a></strong>';
+    $settings_link = '<strong><a href="options-general.php?page=wp-permalauts/wp-permalauts.php" style="color:#093;">'.__("Settings").'</a></strong>';
      array_unshift($links, $settings_link);
   }
   return $links;
