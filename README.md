@@ -1,12 +1,15 @@
 # WP Permalauts
 
-Deutsche Umlaute in Permalinks von WordPress
+***Deprecated since WordPress 3.6!***
 
-## Meta
+-----
 
-* Home: [permalauts.de](http://permalauts.de/)
-* WordPress Plugin Repository: [wordpress.org/extend/wp-permalauts](http://wordpress.org/extend/plugins/wp-permalauts/)
-* WordPress Plugin SVN: [plugins.svn.wordpress.org/wp-permalauts](http://plugins.svn.wordpress.org/wp-permalauts/)
-* GitHub Repository: [https://github.com/kaffee-mit-milch/wp-permalauts](https://github.com/kaffee-mit-milch/wp-permalauts)
-* Social Translation: [https://translate.foe-services.de/projects/wp-permalauts](https://translate.foe-services.de/projects/wp-permalauts)
+You do not need to use this plugin anymore!
 
+Just add in your `wp-config.php` following code:
+
+```php
+define('WPLANG', 'de_DE');
+```
+
+Have fun!
